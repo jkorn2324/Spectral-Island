@@ -7,10 +7,12 @@ public class DebugInterfaceBehavior : MonoBehaviour
     private GUIStyle style = new GUIStyle();
 
     // game references
+    public GlobalGameStateManager Manager;
     public GameObject Player;
 
     void Start()
     {
+        Manager = FindObjectOfType<GlobalGameStateManager>();
         style.fontSize = 30;
     }
 
@@ -24,8 +26,15 @@ public class DebugInterfaceBehavior : MonoBehaviour
         //{
         //    print("Button pressed");
         //}
-        GUI.Label(new Rect(10, 10, 100, 50), $"Player position ({Player.transform.position.x} : {Player.transform.position.y})", style);
-        GUI.Label(new Rect(10, 70, 100, 50), $"More info about the player can be added here", style);
+        if (GUI.Button(new Rect(10, 30, 250, 50), $"Game Mode: {Manager.GameMode}", style))
+        {
+            Manager.GameMode += 1;
+            if (Manager.GameMode == GlobalGameStateManager.gameMode.count)
+            {
+                Manager.GameMode = (GlobalGameStateManager.gameMode) 0;
+            }
+        }
+        //GUI.Label(new Rect(10, 70, 100, 50), $"More info about the player can be added here", style);
     }
 
 }
