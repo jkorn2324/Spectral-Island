@@ -8,7 +8,8 @@ public class GlobalGameStateManager : MonoBehaviour
     {
         menu,
         overworld,
-        battle
+        battle,
+        count
     }
     public gameMode GameMode; 
 
