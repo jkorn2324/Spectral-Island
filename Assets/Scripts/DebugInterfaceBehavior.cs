@@ -9,6 +9,7 @@ public class DebugInterfaceBehavior : MonoBehaviour
     // game references
     public GlobalGameStateManager Manager;
     public GameObject Player;
+    public BossController Boss;
 
     void Start()
     {
@@ -33,6 +34,14 @@ public class DebugInterfaceBehavior : MonoBehaviour
             {
                 Manager.GameMode = (GlobalGameStateManager.gameMode) 0;
             }
+        }
+        if (GUI.Button(new Rect(10, 90, 200, 50), "Increase Boss HP", style))
+        {
+            Boss.ChangeHp(.5f);
+        }
+        if (GUI.Button(new Rect(10, 150, 200, 50), "Decrease Boss HP", style))
+        {
+            Boss.ChangeHp(-.5f);
         }
         //GUI.Label(new Rect(10, 70, 100, 50), $"More info about the player can be added here", style);
     }

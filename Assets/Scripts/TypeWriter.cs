@@ -6,17 +6,26 @@ using UnityEngine.UI;
 public class TypeWriter : MonoBehaviour
 {
     public Text textBox;
-    string[] textList = new string[] { "sample text 1", "sample text 2", "sample text 3" };
+    public BossController Boss; // this needs to be set each time by the Boss when it initializes
+    string[] textList;
+    public ScriptData Script;
     int currentTextIndex = -1;
     public float typewriterDelay = 0.05f;
     private IEnumerator currentCoroutine;
     private bool coroutineLock;
-    private bool shouldWrite = true;
+    private bool shouldWrite;
     private bool skipRequested = false;
 
     void Awake()
     {
-        textBox.text = "";
+        textList = new string[] { };
+        InitTypewriter(false);
+    }
+
+    void SetText(string[] text)
+    {
+        textList = text;
+        InitTypewriter(true);
     }
 
     public void AdvanceText()
@@ -24,15 +33,21 @@ public class TypeWriter : MonoBehaviour
         currentTextIndex++;
         if (currentTextIndex >= textList.Length)
         {
-            currentTextIndex = -1;
-            textBox.text = "";
-            shouldWrite = false;
+            InitTypewriter(false);
+            // todo: let boss know it's time to go again
         }
         else
         {
             // todo: make textbox start sound
             StartCoroutine(WriteText());
         }
+    }
+
+    public void InitTypewriter(bool shouldWrite)
+    {
+        textBox.text = "";
+        shouldWrite = shouldWrite;
+        currentTextIndex = -1;
     }
 
     IEnumerator WriteText()
