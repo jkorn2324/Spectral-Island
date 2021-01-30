@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TypeWriter : MonoBehaviour
 {
+    public GlobalGameStateManager GameState;
     public Text textBox;
     public BossController Boss; // this needs to be set each time by the Boss when it initializes
     string[] textList;
@@ -19,15 +20,16 @@ public class TypeWriter : MonoBehaviour
 
     void Awake()
     {
+        GameState = FindObjectOfType<GlobalGameStateManager>();
         textList = new string[] { };
         InitTypewriter(false);
         Script = FindObjectOfType<ScriptData>();
     }
 
-    public void SetText(int boss, int phase, int posorneg)
+    public void SetText(int key)
     {
         InitTypewriter(true);
-        textList = Script.npcTextArray[boss][phase][posorneg];
+        textList = Script.npcTextMap[key];
     }
 
     public void AdvanceText()
@@ -72,24 +74,27 @@ public class TypeWriter : MonoBehaviour
 
     public void Update()
     {
-        if (shouldWrite)
+        if (GameState.GameMode == GlobalGameStateManager.gameMode.battle)
         {
-            if (currentTextIndex == -1)
+            if (shouldWrite)
             {
-                AdvanceText();
-            }
-            if (!coroutineLock)
-            {
-                if (Input.GetButtonDown("Interact")) // player continues
+                if (currentTextIndex == -1)
                 {
-                    UnityEngine.Debug.Log("Advance Text");
                     AdvanceText();
                 }
-            }
-            else if (Input.GetButtonDown("Interact")) // player skip
-            {
-                UnityEngine.Debug.Log("Text Skip Requested");
-                skipRequested = true;
+                if (!coroutineLock)
+                {
+                    if (Input.GetButtonDown("Interact")) // player continues
+                    {
+                        UnityEngine.Debug.Log("Advance Text");
+                        AdvanceText();
+                    }
+                }
+                else if (Input.GetButtonDown("Interact")) // player skip
+                {
+                    UnityEngine.Debug.Log("Text Skip Requested");
+                    skipRequested = true;
+                }
             }
         }
     }

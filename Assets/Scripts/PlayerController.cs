@@ -2,6 +2,7 @@
 
 public class PlayerController : MonoBehaviour
 {
+    public GlobalGameStateManager GameState;
     public enum Direction
     {
         LEFT = 0,
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        GameState = FindObjectOfType<GlobalGameStateManager>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         facingDirection = Direction.DOWN;
@@ -48,16 +50,22 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        CheckInput();
-        CheckMovementDirection();
-        UpdateAnimations();
-        this._interactController?.Update();
+        if (GameState.GameMode == GlobalGameStateManager.gameMode.overworld)
+        {
+            CheckInput();
+            CheckMovementDirection();
+            UpdateAnimations();
+            this._interactController?.Update();
+        }
     }
 
     private void FixedUpdate()
     {
-        ApplyMovement();
-        ApplyExternalInfluences();
+        if (GameState.GameMode == GlobalGameStateManager.gameMode.overworld)
+        {
+            ApplyMovement();
+            ApplyExternalInfluences();
+        }
     }
 
     private void OnGUI()

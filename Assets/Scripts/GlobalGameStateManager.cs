@@ -6,10 +6,10 @@ public class GlobalGameStateManager : MonoBehaviour
 {
     public enum gameMode
     {
-        menu,
+        menu, // currently unused (probably start menu or something)
         overworld,
         battle,
-        count
+        count // just used to keep track of the number of modes
     }
     public gameMode GameMode; 
 

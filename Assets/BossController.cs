@@ -5,29 +5,44 @@ using UnityEngine.UI;
 
 public class BossController : MonoBehaviour
 {
-    public int BossIndex;
-    private int PhaseIndex;
+    GlobalGameStateManager GameState;
+    public int BossIndex; // THIS MUST BE 1-INDEXED
+    private int currentScriptKey;
     public float hp = 0f;
     public Slider hpSlider;
     private float targetHp;
     public float hpPerSecond = 0.5f;
     private bool changingHp = false;
-    public TypeWriter Writer;
+    public TypeWriter NpcWriter;
+    public ChoiceWriter ChoiceWriter;
+    private int playerChoice = 0;
+    public Animator animator;
+    private bool waitingForChoice = false;
+    private bool sentChoiceRequest = false;
     // used to check if player has gone through text
     public bool scriptSeen = false;
     // Start is called before the first frame update
     void Start()
     {
-        Writer = FindObjectOfType<TypeWriter>();
+        GameState = FindObjectOfType<GlobalGameStateManager>();
+        NpcWriter = FindObjectOfType<TypeWriter>();
+        ChoiceWriter = FindObjectOfType<ChoiceWriter>();
         targetHp = hp;
         AttachToWriter();
     }
 
+    public void SetChoice(int choice)
+    {
+        waitingForChoice = false;
+        playerChoice = choice;
+
+    }
+
     public void AttachToWriter()
     {
-        Writer.Boss = this;
-        PhaseIndex = 0;
-        Writer.SetText(BossIndex, PhaseIndex, 0);
+        NpcWriter.Boss = this;
+        currentScriptKey = BossIndex;
+        NpcWriter.SetText(currentScriptKey);
     }
 
     public void ChangeHp(float delta)
@@ -40,39 +55,65 @@ public class BossController : MonoBehaviour
         {
             targetHp = hp + delta;
         }
+        targetHp = Mathf.Clamp(targetHp, 0f, 1f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (scriptSeen)
+        if (GameState.GameMode == GlobalGameStateManager.gameMode.battle)
         {
-            // todo: make this also do player choices
-            // here we can also set triggers for things to happen after stuff is seen.. music start perhaps?
-            PhaseIndex++;
-            if (PhaseIndex == 5) // this doesn't exist
+            if (scriptSeen)
             {
-                // this boss is done
-                // todo: transition away?
+                // here we can also set triggers for things to happen after stuff is seen.. music stuff perhaps?
+                if (currentScriptKey > 1000)
+                {
+                    // we're at the end of the script sequence
+                    // todo: get out of this fight. should update any flags and ask the globalgamestatemanager to swap us back to the overworld state
+                }
+                else
+                {
+                    // wait for the player to pick something. for now, this is just always 1
+                    // todo: implement player choices
+                    if (!sentChoiceRequest)
+                    {
+                        ChoiceWriter.SetChoice(currentScriptKey);
+                        waitingForChoice = true;
+                        sentChoiceRequest = true;
+                    }
+                    else
+                    {
+                        if (waitingForChoice)
+                        {
+                            // wait patiently
+                        }
+                        else
+                        {
+                            currentScriptKey *= 10;
+                            currentScriptKey += playerChoice;
+                            NpcWriter.SetText(currentScriptKey);
+                            scriptSeen = false; // once player has picked, we can set scriptSeen to false for the next round of text
+                            sentChoiceRequest = false;
+                            waitingForChoice = false;
+                            playerChoice = 0;
+                        }
+                    }
+                }
             }
-            else
+            // hp updates
+            if (hp != targetHp)
             {
-                Writer.SetText(BossIndex, PhaseIndex, 0);
+                float origHp = hp;
+                float deltaHp = targetHp - hp;
+                hp += Mathf.Sign(deltaHp) * hpPerSecond;
+                // check for overshoot
+                if (Mathf.Sign(hp - origHp) == Mathf.Sign(hp - targetHp))
+                {
+                    hp = targetHp;
+                }
             }
-            scriptSeen = false;
+            hpSlider.value = hp == 0 ? 0.01f : hp;
+            animator.SetFloat("hp", hp); // you can use this animator to set the sprite based on the hp, probably in discrete steps
         }
-        // hp updates
-        if (hp != targetHp)
-        {
-            float origHp = hp;
-            float deltaHp = targetHp - hp;
-            hp += Mathf.Sign(deltaHp) * hpPerSecond;
-            // check for overshoot
-            if (Mathf.Sign(hp - origHp) == Mathf.Sign(hp - targetHp))
-            {
-                hp = targetHp;
-            }
-        }
-        hpSlider.value = hp == 0 ? 0.01f : hp;
     }
 }

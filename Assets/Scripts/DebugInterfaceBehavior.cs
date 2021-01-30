@@ -32,16 +32,19 @@ public class DebugInterfaceBehavior : MonoBehaviour
             Manager.GameMode += 1;
             if (Manager.GameMode == GlobalGameStateManager.gameMode.count)
             {
-                Manager.GameMode = (GlobalGameStateManager.gameMode) 0;
+                Manager.GameMode = (GlobalGameStateManager.gameMode)0;
             }
         }
-        if (GUI.Button(new Rect(10, 90, 200, 50), "Increase Boss HP", style))
+        if (Manager.GameMode == GlobalGameStateManager.gameMode.battle)
         {
-            Boss.ChangeHp(.5f);
-        }
-        if (GUI.Button(new Rect(10, 150, 200, 50), "Decrease Boss HP", style))
-        {
-            Boss.ChangeHp(-.5f);
+            if (GUI.Button(new Rect(10, 90, 200, 50), "Increase Boss HP", style))
+            {
+                Boss.ChangeHp(.5f);
+            }
+            if (GUI.Button(new Rect(10, 150, 200, 50), "Decrease Boss HP", style))
+            {
+                Boss.ChangeHp(-.5f);
+            }
         }
         //GUI.Label(new Rect(10, 70, 100, 50), $"More info about the player can be added here", style);
     }
