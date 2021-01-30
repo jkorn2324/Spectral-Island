@@ -33,6 +33,6 @@ public static class InteractableObjectSet
     /// <returns>An Interactable object.</returns>
     public static InteractableObject GetClosestObjectTo(Vector2 position)
     {
-
+        return null;
     }
 }

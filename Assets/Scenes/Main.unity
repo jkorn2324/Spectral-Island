@@ -1246,6 +1246,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b376481a8954e674c8de12b17c9a0e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  yToZVariable:
+    isConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: adcbd470cdea512419288f4aaf152cc2, type: 2}
   movementSpeed: 12
   Collidable:
     serializedVersion: 2
