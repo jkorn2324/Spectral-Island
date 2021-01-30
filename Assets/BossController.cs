@@ -74,7 +74,6 @@ public class BossController : MonoBehaviour
                 else
                 {
                     // wait for the player to pick something. for now, this is just always 1
-                    // todo: implement player choices
                     if (!sentChoiceRequest)
                     {
                         ChoiceWriter.SetChoice(currentScriptKey);

@@ -15,6 +15,7 @@ public class BattleUIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // todo: pull this out into the mode swap function when we implment it, because setting this every frame is dumb
         if (Manager.GameMode == GlobalGameStateManager.gameMode.battle)
         {
             CanvasGroup.alpha = 1f;

@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
     private void UpdateAnimations()
     {
         //anim.SetBool("isWalking", isWalking);
-        // todo: set animator int for facing direction
+        // todo: set animator int for up/down/side direction
     }
 
     private void CheckInput()
