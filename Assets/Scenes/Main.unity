@@ -392,6 +392,7 @@ GameObject:
   - component: {fileID: 238262212}
   - component: {fileID: 238262211}
   - component: {fileID: 238262215}
+  - component: {fileID: 238262216}
   m_Layer: 5
   m_Name: BattleUI
   m_TagString: Untagged
@@ -493,6 +494,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dec87a57caf1e741a3de857cdd1620c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Manager: {fileID: 0}
+  CanvasGroup: {fileID: 238262216}
+--- !u!225 &238262216
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238262210}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &348554297
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,6 +1353,10 @@ MonoBehaviour:
     isConstant: 0
     constantValue: 0
     variable: {fileID: 11400000, guid: adcbd470cdea512419288f4aaf152cc2, type: 2}
+  interactData:
+    interactHitboxOffset: 0
+    interactHitboxWidth: 0
+    interactHitboxHeight: 0
   movementSpeed: 12
   Collidable:
     serializedVersion: 2
@@ -1708,7 +1727,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1522767746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1721,6 +1740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 780fe4f2caecdb84c844cba0ac5490f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Manager: {fileID: 0}
   Player: {fileID: 1065317819}
 --- !u!4 &1522767747
 Transform:
