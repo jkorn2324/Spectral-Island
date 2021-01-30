@@ -2,9 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlobalSettings : MonoBehaviour
+public class GlobalGameStateManager : MonoBehaviour
 {
-    public float YToZ = 0.01f;
+    public enum gameMode
+    {
+        menu,
+        overworld,
+        battle
+    }
+    public gameMode GameMode; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +21,6 @@ public class GlobalSettings : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
     }
 }
