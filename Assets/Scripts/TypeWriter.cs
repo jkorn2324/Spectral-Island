@@ -16,16 +16,18 @@ public class TypeWriter : MonoBehaviour
     private bool shouldWrite;
     private bool skipRequested = false;
 
+
     void Awake()
     {
         textList = new string[] { };
         InitTypewriter(false);
+        Script = FindObjectOfType<ScriptData>();
     }
 
-    void SetText(string[] text)
+    public void SetText(int boss, int phase, int posorneg)
     {
-        textList = text;
         InitTypewriter(true);
+        textList = Script.npcTextArray[boss][phase][posorneg];
     }
 
     public void AdvanceText()
@@ -34,7 +36,7 @@ public class TypeWriter : MonoBehaviour
         if (currentTextIndex >= textList.Length)
         {
             InitTypewriter(false);
-            // todo: let boss know it's time to go again
+            Boss.scriptSeen = true;
         }
         else
         {
@@ -46,7 +48,7 @@ public class TypeWriter : MonoBehaviour
     public void InitTypewriter(bool shouldWrite)
     {
         textBox.text = "";
-        shouldWrite = shouldWrite;
+        this.shouldWrite = shouldWrite;
         currentTextIndex = -1;
     }
 
