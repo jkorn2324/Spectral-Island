@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private float verticalInputDirection;
     private bool canMove;
     private direction facingDirection;
+    private GlobalSettings Globals;
 
     [SerializeField]
     private float movementSpeed;
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         facingDirection = direction.DOWN;
         canMove = true;
+        Globals = FindObjectOfType<GlobalSettings>();
     }
 
     void Update()
@@ -86,7 +88,7 @@ public class PlayerController : MonoBehaviour
             Vector2 movement = new Vector2(horizontalInputDirection, verticalInputDirection);
             movement = movement.normalized * movementSpeed;
             rb.velocity = movement;
-            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.y);
+            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.y * Globals.YToZ);
         }
     }
 
