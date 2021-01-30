@@ -16,7 +16,7 @@ public class InteractableObject : MonoBehaviour
     private void Start()
     {
         Vector3 position = this.transform.position;
-
+        
         this._interactedHitbox = new Rect();
         this._interactedHitbox.x = position.x;
         this._interactedHitbox.y = position.y;
@@ -25,21 +25,30 @@ public class InteractableObject : MonoBehaviour
     }
 
     /// <summary>
-    /// Updates the object.
+    /// Called when the object is enabled.
     /// </summary>
-    private void Update()
+    private void OnEnable()
     {
-
+        InteractableObjectSet.AddInteractableObject(this);
     }
 
     /// <summary>
-    /// Determines whether the player can be interacted.
+    /// Called when the object is disabled.
     /// </summary>
-    /// <param name="controller">The player controller.</param>
-    /// <returns>A boolean.</returns>
-    public bool CanInteract(PlayerController controller)
+    private void OnDisable()
     {
-        return false;
+        InteractableObjectSet.RemoveInteractableObject(this);
+    }
+
+    /// <summary>
+    /// Determines whether the interactable object's interaction hitbox
+    /// overlaps with the input rectangle.
+    /// </summary>
+    /// <param name="controller">The input rectangle..</param>
+    /// <returns>A boolean that returns true if they overlap.</returns>
+    public bool IsOverlappingWith(Rect rect)
+    {
+        return rect.Overlaps(this._interactedHitbox);
     }
 
     /// <summary>
@@ -49,5 +58,6 @@ public class InteractableObject : MonoBehaviour
     public void OnInteract(PlayerController controller)
     {
         // TODO: Implementation.
+        Debug.Log(this.name + " is being interactedddddddddddd");
     }
 }

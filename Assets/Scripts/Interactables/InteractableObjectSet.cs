@@ -33,6 +33,25 @@ public static class InteractableObjectSet
     /// <returns>An Interactable object.</returns>
     public static InteractableObject GetClosestObjectTo(Vector2 position)
     {
-        return null;
+        if(_interactableObjects.Count <= 0)
+        {
+            return null;
+        }
+
+        InteractableObject closestObject = _interactableObjects[0];
+        float closestDistance = Vector2.Distance(
+            position, closestObject.transform.position);
+        for(int i = 1; i < _interactableObjects.Count; i++)
+        {
+            InteractableObject testObject = _interactableObjects[i];
+            float dist = Vector2.Distance(
+                position, testObject.transform.position);
+            if(dist < closestDistance)
+            {
+                closestObject = testObject;
+                closestDistance = dist;
+            }
+        }
+        return closestObject;
     }
 }

@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour
     public Direction CurrentDirection
         => this.facingDirection;
 
+    public PlayerInteractController InteractController
+        => this._interactController;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -55,6 +58,10 @@ public class PlayerController : MonoBehaviour
     {
         ApplyMovement();
         ApplyExternalInfluences();
+    }
+
+    private void OnGUI()
+    {
     }
 
     private void ApplyExternalInfluences()
@@ -110,5 +117,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+
     }
 }

@@ -40,38 +40,52 @@ public class PlayerInteractController
     /// </summary>
     public void Update()
     {
+        Rect rect = this.GenerateHitboxRect();
+        Debug.DrawLine(this.Position, rect.position);
         if (!this.HasInteractButtonDown)
         {
             return;
         }
 
-        Rect rect = this.GenerateHitboxRect();
-        // TODO: Get set of interactable objects.
+        InteractableObject interactableObject =
+            InteractableObjectSet.GetClosestObjectTo(rect.position);
+        if (interactableObject == null)
+        {
+            return;
+        }
+           
+        // Calls to interact with the object.
+        if (interactableObject.IsOverlappingWith(rect))
+        {
+            interactableObject.OnInteract(this._parent);
+        }
     }
 
+    /// <summary>
+    /// Generates the hitbox rectangle for the player.
+    /// </summary>
+    /// <returns>The hitbox rectangle.</returns>
     private Rect GenerateHitboxRect()
     {
         Rect rect = new Rect();
-        
         // Sets the x & y positions based on the hitbox offset.
-        float x = this.Position.x;
-        float y = this.Position.y;
+        rect.x = this.Position.x;
+        rect.y = this.Position.y;
         switch (this._parent.CurrentDirection)
         {
             case PlayerController.Direction.DOWN:
-                y -= this._interactData.interactHitboxOffset;
+                rect.y -= this._interactData.interactHitboxOffset;
                 break;
             case PlayerController.Direction.LEFT:
-                x -= this._interactData.interactHitboxOffset;
+                rect.x -= this._interactData.interactHitboxOffset;
                 break;
             case PlayerController.Direction.UP:
-                y += this._interactData.interactHitboxOffset;
+                rect.y += this._interactData.interactHitboxOffset;
                 break;
             case PlayerController.Direction.RIGHT:
-                x += this._interactData.interactHitboxOffset;
+                rect.x += this._interactData.interactHitboxOffset;
                 break;
         }
-
         rect.width = this._interactData.interactHitboxWidth;
         rect.height = this._interactData.interactHitboxHeight;
         return rect;
