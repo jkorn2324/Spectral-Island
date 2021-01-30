@@ -1,47 +1,57 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private enum direction
+    public enum Direction
     {
         LEFT = 0,
         RIGHT = 1,
         UP = 2,
         DOWN = 3
     }
+
+    [SerializeField]
+    private FloatReference yToZVariable;
+    [SerializeField]
+    private PlayerInteractData interactData;
+    [SerializeField]
+    private float movementSpeed;
+
+    private PlayerInteractController _interactController;
+
     private Rigidbody2D rb;
     private Animator anim;
 
     private float horizontalInputDirection;
     private float verticalInputDirection;
     private bool canMove;
-    private direction facingDirection;
-    private GlobalSettings Globals;
+    private Direction facingDirection;
 
-    [SerializeField]
-    private float movementSpeed;
     public LayerMask Collidable;
     public LayerMask Interactable;
 
-    void Start()
+    public Direction CurrentDirection
+        => this.facingDirection;
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        facingDirection = direction.DOWN;
+        facingDirection = Direction.DOWN;
         canMove = true;
-        Globals = FindObjectOfType<GlobalSettings>();
+
+        this._interactController = new PlayerInteractController(this, this.interactData);
     }
 
-    void Update()
+    private void Update()
     {
         CheckInput();
         CheckMovementDirection();
         UpdateAnimations();
+        this._interactController?.Update();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         ApplyMovement();
         ApplyExternalInfluences();
@@ -69,8 +79,8 @@ public class PlayerController : MonoBehaviour
         verticalInputDirection = Input.GetAxisRaw("Vertical");
 
         // when moving diagonally, default to up/down facing
-        facingDirection = horizontalInputDirection > 0 ? direction.RIGHT : direction.LEFT;
-        facingDirection = verticalInputDirection > 0 ? direction.UP : direction.DOWN;
+        facingDirection = horizontalInputDirection > 0 ? Direction.RIGHT : Direction.LEFT;
+        facingDirection = verticalInputDirection > 0 ? Direction.UP : Direction.DOWN;
         if (Input.GetButtonDown("Interact"))
         {
             // todo: check overlap with interactable object and switch on object type (or call object.Interact(player))
@@ -88,7 +98,7 @@ public class PlayerController : MonoBehaviour
             Vector2 movement = new Vector2(horizontalInputDirection, verticalInputDirection);
             movement = movement.normalized * movementSpeed;
             rb.velocity = movement;
-            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.y * Globals.YToZ);
+            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.y * this.yToZVariable.Value);
         }
     }
 
