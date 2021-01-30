@@ -26,6 +26,8 @@ public class ScriptData : MonoBehaviour
     public Dictionary<int, string[]> npcTextMap = new Dictionary<int, string[]>();
     public Dictionary<int, string> playerResponseMap = new Dictionary<int, string>();
 
+    public Dictionary<string, string[]> overworldTextMap = new Dictionary<string, string[]>();
+
     void Start()
     {
         // boss 1
@@ -73,6 +75,8 @@ public class ScriptData : MonoBehaviour
         playerResponseMap.Add(1222, "");
         npcTextMap.Add(1222, new string[] { });
 
+
+        overworldTextMap.Add("test", new string[] { "hello", "goodbye" });
 
         //// drowned has 5 phases
         //npcTextArray[drowned] = new string[5][][];

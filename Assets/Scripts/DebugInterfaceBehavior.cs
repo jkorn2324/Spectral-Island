@@ -35,6 +35,13 @@ public class DebugInterfaceBehavior : MonoBehaviour
                 Manager.GameMode = (GlobalGameStateManager.gameMode)0;
             }
         }
+        if (Manager.GameMode == GlobalGameStateManager.gameMode.overworld)
+        {
+            if (GUI.Button(new Rect(10, 90, 200, 50), "Overworld Dialogue Test", style))
+            {
+                FindObjectOfType<OverworldTypewriter>().SetText("test");
+            }
+        }
         if (Manager.GameMode == GlobalGameStateManager.gameMode.battle)
         {
             if (GUI.Button(new Rect(10, 90, 200, 50), "Increase Boss HP", style))

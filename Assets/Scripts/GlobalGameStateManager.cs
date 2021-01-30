@@ -11,7 +11,7 @@ public class GlobalGameStateManager : MonoBehaviour
         battle,
         count // just used to keep track of the number of modes
     }
-    public gameMode GameMode; 
+    public gameMode GameMode = gameMode.overworld; 
 
     // Start is called before the first frame update
     void Start()
