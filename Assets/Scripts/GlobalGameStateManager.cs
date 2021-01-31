@@ -50,7 +50,7 @@ public class GlobalGameStateManager : MonoBehaviour
     public void ActivateBoss(int key)
     {
         GameMode = gameMode.battle;
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 5; i++)
         {
             BossReferences[i].SetActive(false);
         }

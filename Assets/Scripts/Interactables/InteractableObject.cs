@@ -151,6 +151,10 @@ public class InteractableObject : MonoBehaviour
                 _typeWriter.SetText("burned_boss");
                 this._typeWriter.QueuedBoss = 4;
                 break;
+            case "final_boss":
+                _typeWriter.SetText("final_boss");
+                this._typeWriter.QueuedBoss = 5;
+                break;
             default:
                 Debug.Log($"Currently, this should not happen! The interactable that threw this was {this.gameObject.name}");
                 break;
