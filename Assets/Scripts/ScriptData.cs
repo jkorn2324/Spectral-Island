@@ -6,8 +6,10 @@ public class ScriptData : MonoBehaviour
 {
     //const int numBosses = 4;
     // first index is boss number
-    //const int drowned = 1;
-    //const int stabbed = 2;
+    //const int stabbed = 1;
+    //const int drowned = 2;
+    //const int strangled = 3;
+    //const int burned = 4;
     //// second index is phase
     //const int entry = 0;
     //const int first = 1;
@@ -174,11 +176,156 @@ public class ScriptData : MonoBehaviour
                                             "The Soul fades away." });
 
         playerResponseMap.Add(2222, "You still sound like you’re blaming me.");
-        npcTextMap.Add(2222, new string[] { "It is hard not to feel angry with you",
+        npcTextMap.Add(2222, new string[] { "It is hard not to feel angry with you.",
                                             "If you’d just told me I was such a burden to you, then maybe things could have turned out differently.",
                                             "All I wanted was someone to be supportive while I weathered a crisis.",
                                             "But it’s too bad that you didn’t seem to care.",
                                             "Even a little bit.",
+                                            "The Soul fades away." });
+
+
+        // boss 3: strangled
+        npcTextMap.Add(3, new string[] { "… So you’re actually going to let me talk now?" });
+
+        playerResponseMap.Add(31, "…");
+        npcTextMap.Add(31, new string[] { "Wow, you’re actually giving me room to say what I need to." });
+
+        playerResponseMap.Add(311, "… I know I talked over you a lot.");
+        npcTextMap.Add(311, new string[] { "So you know?",
+                                           "You always chatted up a storm.",
+                                           "Listening to you was fun at first.",
+                                           "But then our friendship became all give and no take.",
+                                           "You didn’t bother to ask anything about me." });
+
+        playerResponseMap.Add(3111, "… Whatever’s on your mind now, I’ll listen.");
+        npcTextMap.Add(3111, new string[] { "I see you’re trying to be considerate",
+                                            "Don’t get me wrong, talking is fun.",
+                                            "But it would be great if we can both talk and listen equally.",
+                                            "You revived this Soul!" });
+
+        playerResponseMap.Add(3112, "But you’re the only one who’d listen!");
+        npcTextMap.Add(3112, new string[] { "I had my own wants and needs too!",
+                                            "Just because I’m a good listener doesn’t make me a wall you can just talk at.",
+                                            "The Soul fades away." });
+
+        playerResponseMap.Add(312, "You seem to have a lot to say now.");
+        npcTextMap.Add(312, new string[] { "And I have for a long time.",
+                                           "Having to listen to you talk and whine all the time became grating and exhausting." });
+
+        playerResponseMap.Add(3121, "… I’ll be more attentive.");
+        npcTextMap.Add(3121, new string[] { "The fact you’re acknowledging your chatterbox tendencies is a start.",
+                                            "But if you ever talk with me again, keep it short.",
+                                            "The Soul fades away." });
+
+        playerResponseMap.Add(3122, "Then why didn’t you say anything?");
+        npcTextMap.Add(3122, new string[] { "If you’d let me, I would have readily complained.",
+                                            "Except you always had to be the center of attention, didn’t you?",
+                                            "The Soul fades away." });
+
+        playerResponseMap.Add(32, "What do you want?");
+        npcTextMap.Add(32, new string[] { "To finally express my grievances." });
+
+        playerResponseMap.Add(321, " … Go ahead.");
+        npcTextMap.Add(321, new string[] { "You were always so excited to talk to me.",
+                                           "But it got to a point you talked over me all the time, even at times I was trying to reach out to you for help." });
+
+        playerResponseMap.Add(3211, "… I’m sorry.");
+        npcTextMap.Add(3211, new string[] { "… It was upsetting to have to silently listen all the time.",
+                                            "But if you’re truly sorry, I hope we can go forward from this with a more equal relationship.",
+                                            "You revived this Soul!" });
+
+        playerResponseMap.Add(3212, "I’m sorry I didn’t notice.");
+        npcTextMap.Add(3212, new string[] { "It isn’t so much that you didn’t notice.",
+                                            "You just chose not to.",
+                                            "The Soul fades away." });
+
+        playerResponseMap.Add(322, "Then go right ahead!");
+        npcTextMap.Add(322, new string[] { "I will, but I wonder if you will actually listen." });
+
+        playerResponseMap.Add(3221, "… I will.");
+        npcTextMap.Add(3221, new string[] { "… You always spoke so enthusiastically.",
+                                            "But I felt like I was talked at and was afraid of interjecting.",
+                                            "I just wanted us to be on equal footing.",
+                                            "The Soul fades away." });
+
+        playerResponseMap.Add(3222, "Please! Just give me a chance!");
+        npcTextMap.Add(3222, new string[] { "It’s always about you, isn’t it?!",
+                                            "Why should I ever give you a chance when you’ve denied me one so many times?",
+                                            "The Soul fades away." });
+
+
+        // boss 4: burned
+        npcTextMap.Add(4, new string[] { "You know I care about you.",
+                                         "But we shouldn’t exist solely for each other.",
+                                         "We have to lead our own lives." });
+
+        playerResponseMap.Add(41, "But you mean so much to me.");
+        npcTextMap.Add(41, new string[] { "You mean a lot to me too.",
+                                          "But you became so overprotective and regarded the rest of the world as enemies.",
+                                          "You even neglected yourself for me." });
+
+        playerResponseMap.Add(411, "I thought you were happy with that.");
+        npcTextMap.Add(411, new string[] { "Not if you were deteriorating before my eyes.",
+                                           "I wanted you to be happy too, with or without me." });
+
+        playerResponseMap.Add(4111, "I’ll find my own happiness. I’ll see you.");
+        npcTextMap.Add(4111, new string[] { "And I’ll eagerly await the day we can reunite and talk all about what we’ve been up to.",
+                                            "You revived this Soul!" });
+
+        playerResponseMap.Add(4112, "Please just let me stay by your side! I’ll do anything!");
+        npcTextMap.Add(4112, new string[] { "I want you to do something for yourself for once.",
+                                            "It scares me just how much you require my existence and my validation simply to live.",
+                                            "The Soul fades away." });
+
+        playerResponseMap.Add(412, "The world can burn as long as you’re happy!");
+        npcTextMap.Add(412, new string[] { "That’s exactly the problem!",
+                                           "Have you considered how I felt?",
+                                           "My own personal dreams involve thinking about the world beyond us, you know!" });
+
+        playerResponseMap.Add(4121, "I… didn’t know.");
+        npcTextMap.Add(4121, new string[] { "Hmm.",
+                                            "I never did tell you any of this.",
+                                            "I wanted to part from you when you had a dream for yourself, but a time for an amicable parting never came.",
+                                            "The Soul fades away." });
+
+        playerResponseMap.Add(4122, "But I want us to be together!");
+        npcTextMap.Add(4122, new string[] { "I would only want to be with you if I know you’ve changed for the better.",
+                                            "And only if you would stop treating me like your savior.",
+                                            "The Soul fades away." });
+
+        playerResponseMap.Add(42, "But you’re the only one I was truly happy with!");
+        npcTextMap.Add(42, new string[] { "I’m sure that’s not true.",
+                                          "Besides, the idea that your happiness depends on me is quite twisted." });
+
+        playerResponseMap.Add(421, "… I know. But I didn't know what else to do.");
+        npcTextMap.Add(421, new string[] { "There came a point where I wanted to fulfill my own dreams.",
+                                           "And I would’ve been happy seeing you pursue your own goals too, even if we couldn’t be together." });
+
+        playerResponseMap.Add(4211, "I will try to find my own way. I won’t forget you.");
+        npcTextMap.Add(4211, new string[] { "Nor I you.",
+                                            "But I hope that the next time we meet, we’ll both be in better places in our lives.",
+                                            "You revived this Soul!" });
+
+        playerResponseMap.Add(4212, "It seems so hard though.");
+        npcTextMap.Add(4212, new string[] { "You can only try.",
+                                            "But I don’t want to be involved with you if you only want to burn me out along with you.",
+                                            "The Soul fades away." });
+
+        playerResponseMap.Add(422, "Please! You’re the only good thing in my life!");
+        npcTextMap.Add(422, new string[] { "I know we were both lonely and found solace in each other.",
+                                           "But I can’t be your only source of happiness." });
+
+        playerResponseMap.Add(4221, "… I understand.");
+        npcTextMap.Add(4221, new string[] { "… I hope so.",
+                                            "I think it would be best if we parted ways for good.",
+                                            "I don’t want to see you again.",
+                                            "The Soul fades away." });
+
+        playerResponseMap.Add(4222, "I can make it up to you!");
+        npcTextMap.Add(4222, new string[] { "How?!",
+                                            "Everything you’ve done for me has ended up making things worse for both of us in the long run.",
+                                            "It will be best for us to never see each other again.",
+                                            "Goodbye.",
                                             "The Soul fades away." });
 
 
