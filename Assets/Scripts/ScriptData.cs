@@ -347,6 +347,7 @@ public class ScriptData : MonoBehaviour
         overworldTextMap.Add("gotrope", new string[] { "You obtained a rope." });
         overworldTextMap.Add("burned_boss", new string[] { "You find your friend.", "They've been set alight." });
         overworldTextMap.Add("gottorch", new string[] { "You obtained a torch." });
+        overworldTextMap.Add("final_boss", new string[] { "It's you.", "You stare at yourself.", "You stare back." });
 
         //// drowned has 5 phases
         //npcTextArray[drowned] = new string[5][][];
