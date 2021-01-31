@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
         DOWN = 3
     }
 
+    private bool isMoving;
+
     [SerializeField]
     private FloatReference yToZVariable;
     [SerializeField]
@@ -106,6 +108,8 @@ public class PlayerController : MonoBehaviour
         {
             animface = ANIMSIDE;
         }
+        anim.SetBool("isMoving", isMoving);
+        anim.SetInteger("facing", animface);
         FlipSprite();
     }
 
@@ -160,6 +164,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!canMove || GameState.ControlsLocked)
         {
+            isMoving = false;
             return;
         }
         else
@@ -167,6 +172,7 @@ public class PlayerController : MonoBehaviour
             Vector2 movement = new Vector2(horizontalInputDirection, verticalInputDirection);
             movement = movement.normalized * movementSpeed;
             rb.velocity = movement;
+            isMoving = horizontalInputDirection != 0 || verticalInputDirection != 0;
             //this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.y * this.yToZVariable.Value);
         }
     }
