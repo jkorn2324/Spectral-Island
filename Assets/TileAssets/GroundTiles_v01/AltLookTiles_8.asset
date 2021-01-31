@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: AltLookTiles_8
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -7117544581742405877, guid: 91f3c9b21486e3b45928f807e14ddc76,
+  m_Sprite: {fileID: 5487009184381034382, guid: e033433ae77d5444192a64ebb3d5d69b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
