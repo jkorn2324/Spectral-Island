@@ -60,6 +60,10 @@ public class DebugInterfaceBehavior : MonoBehaviour
             {
                 Manager.ActivateBoss(4);
             }
+            if (GUI.Button(new Rect(10, 330, 200, 50), "Set Boss to Final", style))
+            {
+                Manager.ActivateBoss(5);
+            }
         }
         //GUI.Label(new Rect(10, 70, 100, 50), $"More info about the player can be added here", style);
     }
