@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        FindObjectOfType<OverworldTypewriter>().SetText("start");
         GameState = FindObjectOfType<GlobalGameStateManager>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
