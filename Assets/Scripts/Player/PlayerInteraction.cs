@@ -69,8 +69,8 @@ public class PlayerInteractController
     {
         Rect rect = new Rect();
         // Sets the x & y positions based on the hitbox offset.
-        rect.x = this.Position.x;
-        rect.y = this.Position.y;
+        rect.x = this.Position.x - (this._interactData.interactHitboxWidth / 2.0f);
+        rect.y = this.Position.y + (this._interactData.interactHitboxHeight / 2.0f);
         switch (this._parent.CurrentDirection)
         {
             case PlayerController.Direction.DOWN:

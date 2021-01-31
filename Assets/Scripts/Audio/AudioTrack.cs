@@ -46,6 +46,8 @@ public struct AudioTrackData
     [SerializeField]
     private float trackDuration;
     [SerializeField]
+    private bool playOnAwake;
+    [SerializeField]
     private List<AudioChannelData> channels;
 
     public bool LoopTracks
@@ -53,6 +55,9 @@ public struct AudioTrackData
 
     public float TrackDuration
         => this.trackDuration;
+
+    public bool PlayOnAwake
+        => this.playOnAwake;
 
     public void GenerateChannels(ref Dictionary<string, AudioChannel> outTracks, AudioTrack track, AudioSystem system)
     {

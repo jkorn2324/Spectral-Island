@@ -3,29 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[System.Serializable]
+public class InteractedSound
+{
+    [SerializeField]
+    public AudioClip audioClip;
+    [SerializeField]
+    public float volume;
+}
+
 /// <summary>
 /// The interactable object monobehaviour.
 /// </summary>
+[RequireComponent(typeof(AudioSource))]
 public class InteractableObject : MonoBehaviour
 {
     [SerializeField]
     private float interactableWidth;
     [SerializeField]
     private float interactableHeight;
+    [SerializeField]
+    private int requiredItem = 0;
+    [SerializeField]
+    private string interactableType;
+    [SerializeField]
+    private InteractedSound interactedSound;
+
+    private AudioSource _audioSource;
 
     private Rect _interactedHitbox;
-    public GlobalGameStateManager GameState;
-    public int RequiredItem = 0;
-    public string InteractableKey;
+
+    private GlobalGameStateManager _gameState;
+    private OverworldTypewriter _typeWriter;
 
     private void Start()
     {
+        this._gameState = FindObjectOfType<GlobalGameStateManager>();
+        this._typeWriter = FindObjectOfType<OverworldTypewriter>();
+
+        this._audioSource = this.GetComponent<AudioSource>();
+
         Vector3 position = this.transform.position;
-        GameState = FindObjectOfType<GlobalGameStateManager>();
         
         this._interactedHitbox = new Rect();
-        this._interactedHitbox.x = position.x;
-        this._interactedHitbox.y = position.y;
+        this._interactedHitbox.x = position.x - (interactableWidth / 2.0f);
+        this._interactedHitbox.y = position.y + (interactableHeight / 2.0f);
         this._interactedHitbox.width = interactableWidth;
         this._interactedHitbox.height = interactableHeight;
 
@@ -63,7 +85,7 @@ public class InteractableObject : MonoBehaviour
 
     protected virtual bool CanInteract(PlayerController controller)
     {
-        return this.RequiredItem == 0 || GameState.HasItem(this.RequiredItem);
+        return this.requiredItem == 0 || this._gameState.HasItem(this.requiredItem);
     }
 
     /// <summary>
@@ -78,8 +100,44 @@ public class InteractableObject : MonoBehaviour
         }
     }
 
-    protected virtual void OnInteractSuccess(PlayerController controller) {
-        Debug.Log("hi");
+    protected virtual void OnInteractSuccess(PlayerController controller) 
+    {
+        // TODO: Set this.
 
+        this.PlaySound(this.interactedSound);
+
+        switch(this.interactableType.Trim().ToLower())
+        {
+            case "cliff":
+                // this._typeWriter.SetText(interactableType);
+                break;
+            case "tree":
+                // TODO: remove the interactable
+                // this._typeWriter.SetText(interactableType);
+                break;
+            case "generic_message":
+                // this._typeWriter.SetText(interactableType);
+                break;
+            case "generic_boss":
+                // this._typeWriter.SetText(interactableType);
+                break;
+        }
+    }
+
+    private void PlaySound(InteractedSound sound)
+    {
+        if(this.interactedSound.audioClip == null)
+        {
+            return;
+        }
+
+        if(this._audioSource.isPlaying)
+        {
+            this._audioSource.Stop();
+        }
+
+        this._audioSource.clip = this.interactedSound.audioClip;
+        this._audioSource.volume = this.interactedSound.volume;
+        this._audioSource.Play();
     }
 }
