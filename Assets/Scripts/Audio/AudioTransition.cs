@@ -51,9 +51,6 @@ public class AudioTransition
 
         this._a.Volume = currentAVolume;
         this._b.Volume = currentBVolume;
-
-        this._a.Update(deltaTime);
-        this._b.Update(deltaTime);
     }
 }
 
