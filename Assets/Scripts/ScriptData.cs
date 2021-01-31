@@ -31,13 +31,13 @@ public class ScriptData : MonoBehaviour
     void Start()
     {
         // boss 1
-        npcTextMap.Add(1, new string[] { "phase 0", "phase 0 part 2"});
+        npcTextMap.Add(1, new string[] { "I can’t believe it… You really came back for me." });
 
-        playerResponseMap.Add(11, "player response to reach 11");
-        npcTextMap.Add(11, new string[] { "phase 1 option 1" });
+        playerResponseMap.Add(11, "What do you mean?");
+        npcTextMap.Add(11, new string[] { "Ah, of course you wouldn’t remember.", "I basically became nonexistent to you.", "You didn’t spare me a second glance, even when I desperately needed help." });
 
-        playerResponseMap.Add(111, "player response to reach 111");
-        npcTextMap.Add(111, new string[] { "phase 1 option 1, phase 2 option 1" });
+        playerResponseMap.Add(111, "I wanted to help, but I didn’t know how!");
+        npcTextMap.Add(111, new string[] { "The ways you tried to be there for me weren’t perfect by any means.", "But what you did still helped me.", "So when you just up and walked away… it made me feel alone and helpless.", "I’m sure I could’ve figured something out, but I felt a little stronger with your support." });
 
         playerResponseMap.Add(1111, "player response to reach 1111");
         npcTextMap.Add(1111, new string[] { "phase 1 option 1, phase 2 option 1, phase 3 option 1" });
