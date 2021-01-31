@@ -10,6 +10,7 @@ public class AudioSystem : MonoBehaviour
 {
     [SerializeField]
     private AudioTrackData trackData;
+
     private AudioTrack _tracks;
 
     /// <summary>
@@ -18,10 +19,12 @@ public class AudioSystem : MonoBehaviour
     private void Start()
     {
         this._tracks = new AudioTrack(trackData, this);
-        
         this._tracks.HookEvents();
 
-        this._tracks.Play();
+        if(this.trackData.PlayOnAwake)
+        {
+            this._tracks.Play();
+        }
     }
 
     private void OnEnable()
