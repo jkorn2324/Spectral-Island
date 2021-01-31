@@ -2,19 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public struct AudioTransitionData
-{
-    [SerializeField]
-    public float transitionOffset;
-    [SerializeField]
-    public string trackChannelFrom;
-    [SerializeField]
-    public string trackChannelTo;
-    [SerializeField, Range(0.0f, 20f)]
-    public float transitionTime;
-}
-
 /// <summary>
 /// The hacky audio system.
 /// </summary>
@@ -22,28 +9,32 @@ public struct AudioTransitionData
 public class AudioSystem : MonoBehaviour
 {
     [SerializeField]
-    private AudioTracksData trackData;
-    private AudioTracksSet _tracks;
-
-    [SerializeField]
-    private AudioTransitionData transitionData;
+    private AudioTrackData trackData;
+    private AudioTrack _tracks;
 
     /// <summary>
     /// Called when the audio system is called.
     /// </summary>
     private void Start()
     {
-        this._tracks = new AudioTracksSet(trackData, this);
-        this._tracks.Play();
+        this._tracks = new AudioTrack(trackData, this);
+        
+        this._tracks.HookEvents();
 
-        StartCoroutine(this.Transition(this.transitionData.transitionOffset));
+        this._tracks.Play();
     }
 
-    private IEnumerator Transition(float delay)
+    private void OnEnable()
     {
-        yield return new WaitForSeconds(delay);
-        this._tracks.BeginTransition(
-            transitionData.trackChannelFrom, transitionData.trackChannelTo, transitionData.transitionTime);
+        if(this._tracks != null)
+        {
+            this._tracks.HookEvents();
+        }
+    }
+
+    private void OnDisable()
+    {
+        this._tracks.UnHookEvents();
     }
 
     /// <summary>
