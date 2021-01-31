@@ -80,9 +80,10 @@ public class BossController : MonoBehaviour
                         scriptSeen = false;
                         if (hp == 1f)
                         {
-                            // success, give item
-                            GameState.GiveItem(BossIndex);
+                            // success, do something here 
+                            GameState.BossStatus[BossIndex] = true;
                         }
+                        GameState.GiveItem(BossIndex);
                         GameState.GameMode = GlobalGameStateManager.gameMode.overworld;
                     }
                 }

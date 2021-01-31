@@ -10,16 +10,17 @@ public class GlobalGameStateManager : MonoBehaviour
     public const int rope = 3;
     public const int vest = 4;
     // inventory
-    public bool[] inventory = new bool[4];
+    public bool[] Inventory = new bool[4];
+    public bool[] BossStatus = new bool[4];
 
     public bool HasItem(int item)
     {
-        return inventory[item];
+        return Inventory[item];
     }
 
     public void GiveItem(int item)
     {
-        inventory[item] = true;
+        Inventory[item] = true;
     }
 
     public enum gameMode
