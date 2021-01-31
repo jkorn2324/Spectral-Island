@@ -40,7 +40,10 @@ public class AudioSystem : MonoBehaviour
         AudioClip clip;
         if (_nameToOneOff.TryGetValue(name, out clip))
         {
-            _oneOffAudioSource.PlayOneShot(clip, volumeScale);
+            if (!_oneOffAudioSource.isPlaying)
+            {
+                _oneOffAudioSource.PlayOneShot(clip, volumeScale);
+            }
         }
         else
         {
