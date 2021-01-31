@@ -29,6 +29,7 @@ public class OverworldTypewriter : MonoBehaviour
 
     public void SetText(string key)
     {
+        GameState.ControlsLocked = true;
         InitTypewriter(true);
         textList = Script.overworldTextMap[key];
     }
@@ -44,6 +45,7 @@ public class OverworldTypewriter : MonoBehaviour
                 GameState.ActivateBoss(QueuedBoss);
                 QueuedBoss = -1;
             }
+            GameState.ControlsLocked = false;
         }
         else
         {

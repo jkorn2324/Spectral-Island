@@ -28,6 +28,7 @@ public class InteractableObject : MonoBehaviour
     private AudioSource _audioSource;
 
     public BoxCollider2D InteractBox;
+    public InteractableObject PartnerObject;
     private GlobalGameStateManager _gameState;
     private OverworldTypewriter _typeWriter;
 
@@ -66,42 +67,77 @@ public class InteractableObject : MonoBehaviour
 
     public void InteractIfPossible()
     {
-        Debug.Log("Interact if possible");
         if (requiredItem == 0 || _gameState.HasItem(requiredItem))
         {
-            Interact();
+            Interact(true);
+        }
+        else
+        {
+            Interact(false);
         }
     }
 
-    public void Interact() 
+    private void Update()
+    {
+    }
+
+    public void Interact(bool success) 
     {
         // TODO: Set this.
         this.PlaySound(this.interactedSound);
 
         switch(this.interactableType.Trim().ToLower())
         {
+            case "shallowshore":
+                if (success)
+                {
+                    _typeWriter.SetText("shallowsuccess");
+                    FindObjectOfType<PlayerController>().gameObject.transform.position = PartnerObject.transform.position;
+                }
+                else
+                {
+                    _typeWriter.SetText("shallowfail");
+                }
+                break;
             case "cliff":
                 // this._typeWriter.SetText(interactableType);
+                if (success)
+                {
+                    _typeWriter.SetText("cliffsuccess");
+                    FindObjectOfType<PlayerController>().gameObject.transform.position = PartnerObject.transform.position;
+                }
+                else
+                {
+                    _typeWriter.SetText("clifffail");
+                }
                 break;
             case "tree":
                 // TODO: remove the interactable
                 // this._typeWriter.SetText(interactableType);
-                Debug.Log("found tree");
-                break;
+                if (success)
+                {
+                    _typeWriter.SetText("treesuccess");
+                    this.gameObject.SetActive(false);
+                }
+                else
+                {
+                    _typeWriter.SetText("treefail");
+                }
+                    break;
             case "stabbed_boss":
-                // this._typeWriter.SetText(interactableType);
+                _typeWriter.SetText("stabbed_boss");
                 this._typeWriter.QueuedBoss = 1;
                 break;
             case "drowned_boss":
-                // this._typeWriter.SetText(interactableType);
+                _typeWriter.SetText("drowned_boss");
                 this._typeWriter.QueuedBoss = 2;
                 break;
             case "strangled_boss":
-                // this._typeWriter.SetText(interactableType);
+                _typeWriter.SetText("strangled_boss");
                 this._typeWriter.QueuedBoss = 3;
                 break;
             case "burned_boss":
-                // this._typeWriter.SetText(interactableType);
+                _typeWriter.SetText("burned_boss");
                 this._typeWriter.QueuedBoss = 4;
                 break;
             default:

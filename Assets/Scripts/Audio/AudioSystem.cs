@@ -45,6 +45,6 @@ public class AudioSystem : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        this._tracks.Update();
+        this._tracks?.Update();
     }
 }

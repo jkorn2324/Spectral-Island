@@ -93,23 +93,31 @@ public class PlayerController : MonoBehaviour
 
     private void CheckInput()
     {
+        if (GameState.ControlsLocked)
+        {
+            return;
+        }
         horizontalInputDirection = Input.GetAxisRaw("Horizontal");
         verticalInputDirection = Input.GetAxisRaw("Vertical");
 
-        // when moving diagonally, default to left/right facing
-        facingDirection = verticalInputDirection > 0 ? Direction.UP : Direction.DOWN;
-        facingDirection = horizontalInputDirection > 0 ? Direction.RIGHT : Direction.LEFT;
+        if (verticalInputDirection != 0 || horizontalInputDirection != 0)
+        {
+            if (verticalInputDirection != 0)
+            {
+                facingDirection = verticalInputDirection > 0 ? Direction.UP : Direction.DOWN;
+            }
+            if (horizontalInputDirection != 0)
+            {
+                facingDirection = horizontalInputDirection > 0 ? Direction.RIGHT : Direction.LEFT;
+            }
+        }
         if (Input.GetButtonDown("Interact"))
         {
-            Debug.Log("pressing interact");
             // todo: check overlap with interactable object and switch on object type (or call object.Interact(player))
             Vector2 direction = facingDirection == Direction.LEFT ? new Vector2(-1f, 0f) : facingDirection == Direction.RIGHT ? new Vector2(1f, 0f) : facingDirection == Direction.UP ? new Vector2(0f, 1f) : new Vector2(0f, -1f);
-            float distance = facingDirection == Direction.LEFT || facingDirection == Direction.RIGHT ? Collider.size.x / 2 + 0.01f : Collider.size.y / 2 + 0.01f;
+            float distance = facingDirection == Direction.LEFT || facingDirection == Direction.RIGHT ? Collider.size.x / 2 + 0.2f : Collider.size.y / 2 + 0.2f;
             Vector2 start = new Vector2(transform.position.x, transform.position.y);
             RaycastHit2D hit = Physics2D.Raycast(start, direction, distance, Interactable);
-            Debug.Log($"START: {start}");
-            Debug.Log($"DIR: {direction}");
-            Debug.Log(transform.position);
             Debug.DrawRay(this.transform.position, new Vector3(direction.x, direction.y, -1000f));
             if (hit)
             {
@@ -121,7 +129,7 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyMovement()
     {
-        if (!canMove)
+        if (!canMove || GameState.ControlsLocked)
         {
             return;
         }
@@ -130,7 +138,7 @@ public class PlayerController : MonoBehaviour
             Vector2 movement = new Vector2(horizontalInputDirection, verticalInputDirection);
             movement = movement.normalized * movementSpeed;
             rb.velocity = movement;
-            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.y * this.yToZVariable.Value);
+            //this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.y * this.yToZVariable.Value);
         }
     }
 

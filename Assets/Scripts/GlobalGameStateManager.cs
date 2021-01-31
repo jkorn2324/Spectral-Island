@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class GlobalGameStateManager : MonoBehaviour
 {
+    public GameObject[] BossSprites;
+    public TilemapCollider2D SwimmableWater;
+    public bool ControlsLocked = false;
     // bosses
     public GameObject[] BossReferences;
     // items
@@ -24,7 +28,23 @@ public class GlobalGameStateManager : MonoBehaviour
     public void GiveItem(int item)
     {
         Inventory[item - 1] = true;
-        // do special tilemap stuff here
+
+        if (item == 1)
+        {
+            FindObjectOfType<OverworldTypewriter>().SetText("gotaxe");
+        }
+        if (item == 2)
+        {
+            FindObjectOfType<OverworldTypewriter>().SetText("gotvest");
+        }
+        if (item == 3)
+        {
+            FindObjectOfType<OverworldTypewriter>().SetText("gotrope");
+        }
+        if (item == 4)
+        {
+            FindObjectOfType<OverworldTypewriter>().SetText("gottorch");
+        }
     }
 
     public void ActivateBoss(int key)

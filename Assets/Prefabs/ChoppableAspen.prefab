@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e8cb85cead0d554180498d9eac8c1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredItem: 0
+  requiredItem: 1
   interactableType: tree
   interactedSound:
     audioClip: {fileID: 0}
