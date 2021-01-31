@@ -50,6 +50,16 @@ public class AudioChannel
         this.CreateChannel(parent);
     }
 
+    public void HookEvents()
+    {
+        this._transitionManager.HookEvents();
+    }
+
+    public void UnHookEvents()
+    {
+        this._transitionManager.UnHookEvents();
+    }
+
     /// <summary>
     /// Creates a track.
     /// </summary>

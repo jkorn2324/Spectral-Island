@@ -100,6 +100,22 @@ public class AudioTrack
         this._parentSystem = system;
     }
 
+    public void HookEvents()
+    {
+        foreach(AudioChannel t in this._channels.Values)
+        {
+            t.HookEvents();
+        }
+    }
+
+    public void UnHookEvents()
+    {
+        foreach(AudioChannel t in this._channels.Values)
+        {
+            t.UnHookEvents();
+        }
+    }
+
     public void Play()
     {
         foreach(AudioChannel t in this._channels.Values)
