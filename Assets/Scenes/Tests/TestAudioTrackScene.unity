@@ -344,20 +344,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackData:
-    tracks:
-    - clip: {fileID: 8300000, guid: 7449185e23765d242a8f4de7efa43c8b, type: 3}
-      trackName: Track 1
-      activeVolume: 0.5
+    loopTracks: 1
+    trackDuration: 19.8
+    channels:
+    - clips:
+      - clip: {fileID: 8300000, guid: 7449185e23765d242a8f4de7efa43c8b, type: 3}
+        clipName: BossAClip
+        activeVolume: 0.5
+      - clip: {fileID: 8300000, guid: bae9c084974b89540a643b5a8acecc97, type: 3}
+        clipName: BossBClip
+        activeVolume: 0.5
+      channelName: Channel 1
       active: 1
-    - clip: {fileID: 8300000, guid: bae9c084974b89540a643b5a8acecc97, type: 3}
-      trackName: Track 2
-      activeVolume: 0.5
-      active: 0
-  transitionData:
-    transitionOffset: 4
-    trackChannelFrom: Track 1
-    trackChannelTo: Track 2
-    transitionTime: 2
+      channelTransitions:
+      - active: 1
+        startDuration: 4
+        transitionClip: BossBClip
+        transitionTime: 2
 --- !u!1 &656711381
 GameObject:
   m_ObjectHideFlags: 0
