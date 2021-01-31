@@ -30,17 +30,17 @@ public class ScriptData : MonoBehaviour
 
     void Start()
     {
-        // boss 1
-        npcTextMap.Add(1, new string[] { "I can’t believe it… You really came back for me." });
+        // boss 1: backstab
+        npcTextMap.Add(1, new string[] { "To think that you, of all people, would turn on me. I thought we were friends." });
 
-        playerResponseMap.Add(11, "What do you mean?");
-        npcTextMap.Add(11, new string[] { "Ah, of course you wouldn’t remember.", "I basically became nonexistent to you.", "You didn’t spare me a second glance, even when I desperately needed help." });
+        playerResponseMap.Add(11, "… We were.");
+        npcTextMap.Add(11, new string[] { "Then tell me why you turned on me." });
 
-        playerResponseMap.Add(111, "I wanted to help, but I didn’t know how!");
-        npcTextMap.Add(111, new string[] { "The ways you tried to be there for me weren’t perfect by any means.", "But what you did still helped me.", "So when you just up and walked away… it made me feel alone and helpless.", "I’m sure I could’ve figured something out, but I felt a little stronger with your support." });
+        playerResponseMap.Add(111, "I looked up to you, but it wasn’t so simple.");
+        npcTextMap.Add(111, new string[] { "You always praised me and told me how perfect I was.", "But you were amazing too." });
 
-        playerResponseMap.Add(1111, "player response to reach 1111");
-        npcTextMap.Add(1111, new string[] { "phase 1 option 1, phase 2 option 1, phase 3 option 1" });
+        playerResponseMap.Add(1111, "Can we start over?");
+        npcTextMap.Add(1111, new string[] { "I can’t quite forgive you yet.", "But I am willing to start over so long as we don’t keep our feelings secret anymore." });
 
         playerResponseMap.Add(1112, "");
         npcTextMap.Add(1112, new string[] { });
