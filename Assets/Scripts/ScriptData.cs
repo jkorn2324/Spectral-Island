@@ -46,7 +46,7 @@ public class ScriptData : MonoBehaviour
         playerResponseMap.Add(1111, "Can we start over?");
         npcTextMap.Add(1111, new string[] { "I can’t quite forgive you yet.",
                                             "But I am willing to start over so long as we don’t keep our feelings secret anymore.",
-                                            "You revived this Soul!" });
+                                            "The Soul fades away with a smile." });
 
         playerResponseMap.Add(1112, "I couldn’t stand you because you were so perfect.");
         npcTextMap.Add(1112, new string[] { "I may have been perfect in your eyes.",
@@ -78,7 +78,7 @@ public class ScriptData : MonoBehaviour
         playerResponseMap.Add(1211, "It seems we both misunderstood each other.");
         npcTextMap.Add(1211, new string[] { "It certainly seems so.",
                                             "Well, things won’t be the same between us, but we can try starting over and talking about our feelings, both good and bad.",
-                                            "You revived this Soul!" });
+                                            "The Soul fades away with a smile." });
 
         playerResponseMap.Add(1212, "I can’t believe it.");
         npcTextMap.Add(1212, new string[] { "Is it really so unbelievable?",
@@ -117,7 +117,7 @@ public class ScriptData : MonoBehaviour
         playerResponseMap.Add(2111, "I’m sorry. I’ll be there for you next time.");
         npcTextMap.Add(2111, new string[] { "… It’s okay. I know you didn’t always know what to do.",
                                             "Next time, let’s be there for each other.",
-                                            "You revived this Soul!" });
+                                            "The Soul fades away with a smile." });
 
         playerResponseMap.Add(2112, "It still seems like what I did wasn’t enough for you.");
         npcTextMap.Add(2112, new string[] { "Didn’t I already say your support was enough?!",
@@ -153,7 +153,7 @@ public class ScriptData : MonoBehaviour
         npcTextMap.Add(2211, new string[] { "I still feel angry with you.",
                                             "But I understand you didn’t abandon me out of malice. ",
                                             "We can try again as friends, with all the good and bad that comes with it.",
-                                            "You revived this Soul!" });
+                                            "The Soul fades away with a smile." });
 
         playerResponseMap.Add(2212, "You should’ve tried harder on your own.");
         npcTextMap.Add(2212, new string[] { "Don’t you think I’m fully aware that my problems are my own responsibility?",
@@ -201,7 +201,7 @@ public class ScriptData : MonoBehaviour
         npcTextMap.Add(3111, new string[] { "I see you’re trying to be considerate",
                                             "Don’t get me wrong, talking is fun.",
                                             "But it would be great if we can both talk and listen equally.",
-                                            "You revived this Soul!" });
+                                            "The Soul fades away with a smile." });
 
         playerResponseMap.Add(3112, "But you’re the only one who’d listen!");
         npcTextMap.Add(3112, new string[] { "I had my own wants and needs too!",
@@ -232,7 +232,7 @@ public class ScriptData : MonoBehaviour
         playerResponseMap.Add(3211, "… I’m sorry.");
         npcTextMap.Add(3211, new string[] { "… It was upsetting to have to silently listen all the time.",
                                             "But if you’re truly sorry, I hope we can go forward from this with a more equal relationship.",
-                                            "You revived this Soul!" });
+                                            "The Soul fades away with a smile." });
 
         playerResponseMap.Add(3212, "I’m sorry I didn’t notice.");
         npcTextMap.Add(3212, new string[] { "It isn’t so much that you didn’t notice.",
@@ -270,7 +270,7 @@ public class ScriptData : MonoBehaviour
 
         playerResponseMap.Add(4111, "I’ll find my own happiness. I’ll see you.");
         npcTextMap.Add(4111, new string[] { "And I’ll eagerly await the day we can reunite and talk all about what we’ve been up to.",
-                                            "You revived this Soul!" });
+                                            "The Soul fades away with a smile." });
 
         playerResponseMap.Add(4112, "Please just let me stay by your side! I’ll do anything!");
         npcTextMap.Add(4112, new string[] { "I want you to do something for yourself for once.",
@@ -304,7 +304,7 @@ public class ScriptData : MonoBehaviour
         playerResponseMap.Add(4211, "I will try to find my own way. I won’t forget you.");
         npcTextMap.Add(4211, new string[] { "Nor I you.",
                                             "But I hope that the next time we meet, we’ll both be in better places in our lives.",
-                                            "You revived this Soul!" });
+                                            "The Soul fades away with a smile." });
 
         playerResponseMap.Add(4212, "It seems so hard though.");
         npcTextMap.Add(4212, new string[] { "You can only try.",
