@@ -141,7 +141,7 @@ public class InteractableObject : MonoBehaviour
                 this._typeWriter.QueuedBoss = 4;
                 break;
             default:
-                this._typeWriter.SetText(this.interactableType.Trim().ToLower());
+                Debug.Log($"Currently, this should not happen! The interactable that threw this was {this.gameObject.name}");
                 break;
         }
     }

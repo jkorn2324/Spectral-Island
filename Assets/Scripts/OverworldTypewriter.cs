@@ -29,6 +29,7 @@ public class OverworldTypewriter : MonoBehaviour
 
     public void SetText(string key)
     {
+        Debug.Log($"KEY: {key}");
         GameState.ControlsLocked = true;
         InitTypewriter(true);
         textList = Script.overworldTextMap[key];

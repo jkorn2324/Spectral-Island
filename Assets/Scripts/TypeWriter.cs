@@ -34,6 +34,7 @@ public class TypeWriter : MonoBehaviour
 
     public void SetText(int key)
     {
+        Debug.Log($"KEY: {key}");
         InitTypewriter(true);
         textList = Script.npcTextMap[key];
     }

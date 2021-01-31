@@ -93,25 +93,6 @@ public class BossController : MonoBehaviour
                         GameState.SetBossSeen(BossIndex);
                         GameState.BossSprites[BossIndex - 1].SetActive(false);
                         GameState.GiveItem(BossIndex);
-                        if (BossIndex == 1)
-                        {
-                            FindObjectOfType<OverworldTypewriter>().SetText("gotaxe");
-                        }
-                        if (BossIndex == 2)
-                        {
-                            FindObjectOfType<OverworldTypewriter>().SetText("gotvest");
-                        }
-                        if (BossIndex == 3)
-                        {
-                            FindObjectOfType<OverworldTypewriter>().SetText("gotrope");
-                        }
-
-                        if (BossIndex == 4)
-                        {
-                            FindObjectOfType<OverworldTypewriter>().SetText("gottorch");
-                        }
-
-
                         GameState.GameMode = GlobalGameStateManager.gameMode.overworld;
                     }
                 }
