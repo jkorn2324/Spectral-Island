@@ -53,7 +53,7 @@ public class OverworldTypewriter : MonoBehaviour
             GameState.ControlsLocked = false;
             if (lastText)
             {
-                Debug.Log("game over");
+                // TODO: game over
             }
         }
         else
