@@ -17,6 +17,7 @@ public class OverworldTypewriter : MonoBehaviour
     private bool skipRequested = false;
     public CanvasGroup Canvas;
     public int QueuedBoss = -1;
+    private bool lastText = false;
 
 
     void Awake()
@@ -32,6 +33,10 @@ public class OverworldTypewriter : MonoBehaviour
         GameState.ControlsLocked = true;
         InitTypewriter(true);
         textList = Script.overworldTextMap[key];
+        if (key == "gotend")
+        {
+            lastText = true;
+        }
     }
 
     public void AdvanceText()
@@ -46,6 +51,10 @@ public class OverworldTypewriter : MonoBehaviour
                 QueuedBoss = -1;
             }
             GameState.ControlsLocked = false;
+            if (lastText)
+            {
+                Debug.Log("game over");
+            }
         }
         else
         {

@@ -45,6 +45,10 @@ public class GlobalGameStateManager : MonoBehaviour
         {
             FindObjectOfType<OverworldTypewriter>().SetText("gottorch");
         }
+        if (item == 5)
+        {
+            FindObjectOfType<OverworldTypewriter>().SetText("gotend");
+        }
     }
 
     public void ActivateBoss(int key)
