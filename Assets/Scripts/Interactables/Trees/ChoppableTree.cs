@@ -29,7 +29,7 @@ public class ChoppableTree : InteractableObject
     /// Called when the player interacts with the tree.
     /// </summary>
     /// <param name="controller">The player controller.</param>
-    public override void OnInteract(PlayerController controller)
+    protected override void OnInteractSuccess(PlayerController controller)
     {
         this.PlaySound(this.chopTreeSound);
     }
