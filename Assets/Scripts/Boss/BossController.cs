@@ -34,7 +34,15 @@ public class BossController : MonoBehaviour
     public void SetChoice(int choice)
     {
         waitingForChoice = false;
-        ChangeHp(choice == 0 ? -0.5f : 0.5f);
+        ChangeHp(choice == 2 ? -0.5f : 0.5f);
+        if (choice == 2)
+        {
+            Debug.Log("Picked the wrong choice");
+        }
+        else
+        {
+            Debug.Log("Picked the right choice");
+        }
         playerChoice = choice;
 
     }
