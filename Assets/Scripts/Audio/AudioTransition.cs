@@ -55,36 +55,67 @@ public class AudioTransition
 }
 
 [System.Serializable]
-public struct AudioTransitionData
+public class AudioTransitionData
 {
     [SerializeField]
     public bool active;
+
+    [SerializeField]
+    public bool useEvent = false;
+    [SerializeField]
+    public GameEvent eventTrigger;
+    
     [SerializeField]
     public float startDuration;
     [SerializeField]
     public string transitionClip;
     [SerializeField, Range(0.0f, 20f)]
     public float transitionTime;
+}
 
-    public static bool operator <(AudioTransitionData a, AudioTransitionData b)
+/// <summary>
+/// Wrapper class used to contain the data also for hooking events.
+/// </summary>
+public class AudioTransitionDataWrapper
+{
+    private AudioTransitionData _transitionData;
+    private AudioTransitionManager _transitionManager;
+
+    public AudioTransitionData TransitionData
+        => this._transitionData;
+
+    public AudioTransitionDataWrapper(AudioTransitionData transitionData, AudioTransitionManager transitionManager)
     {
-        return a.startDuration < b.startDuration;
+        this._transitionManager = transitionManager;
+        this._transitionData = transitionData;
     }
 
-    public static bool operator >(AudioTransitionData a, AudioTransitionData b)
+    public void HookEvents()
     {
-        return a.startDuration > b.startDuration;
+        if(this._transitionData.useEvent && this._transitionData.eventTrigger != null)
+        {
+            this._transitionData.eventTrigger += this.OnTriggeredEvent;
+        }
     }
 
-    public static bool operator <=(AudioTransitionData a, AudioTransitionData b)
+    public void UnHookEvents()
     {
-
-        return a.startDuration <= b.startDuration;
+        if (this._transitionData.useEvent && this._transitionData.eventTrigger != null)
+        {
+            this._transitionData.eventTrigger -= this.OnTriggeredEvent;
+        }
     }
 
-    public static bool operator >=(AudioTransitionData a, AudioTransitionData b)
+    /// <summary>
+    /// Called when the event was triggered.
+    /// </summary>
+    public void OnTriggeredEvent()
     {
-        return a.startDuration >= b.startDuration;
+        if(!this._transitionData.active)
+        {
+            return;
+        }
+        this._transitionManager.BeginTransition(this._transitionData);
     }
 }
 
@@ -93,7 +124,7 @@ public struct AudioTransitionData
 /// </summary>
 public class AudioTransitionManager
 {
-    private List<AudioTransitionData> _transitions;
+    private List<AudioTransitionDataWrapper> _transitions;
     private AudioChannel _parent;
 
     private float _previousDuration;
@@ -101,20 +132,59 @@ public class AudioTransitionManager
     public AudioTransitionManager(AudioTrackData.AudioChannelData channelData, AudioChannel parentChannel)
     {
         this._parent = parentChannel;
-        this._transitions = channelData.channelTransitions;
+        
+        this._transitions = new List<AudioTransitionDataWrapper>();
+        foreach(AudioTransitionData data in channelData.channelTransitions)
+        {
+            AudioTransitionDataWrapper wrapper = new AudioTransitionDataWrapper(data, this);
+            this._transitions.Add(wrapper);
+        }
+
         this._previousDuration = 0.0f;
+    }
+
+    /// <summary>
+    /// Hooks the event.
+    /// </summary>
+    public void HookEvents()
+    {
+        foreach(AudioTransitionDataWrapper wrapper in this._transitions)
+        {
+            wrapper.HookEvents();
+        }
+    }
+
+    /// <summary>
+    /// Unhooks the events.
+    /// </summary>
+    public void UnHookEvents()
+    {
+        foreach (AudioTransitionDataWrapper wrapper in this._transitions)
+        {
+            wrapper.UnHookEvents();
+        }
+    }
+
+    /// <summary>
+    /// Begins the transition using the transition data.
+    /// </summary>
+    /// <param name="transitionData">The transition data.</param>
+    public void BeginTransition(AudioTransitionData transitionData)
+    {
+        this._parent.BeginTransition(transitionData.transitionClip, transitionData.transitionTime);
     }
 
     public void Update(float deltaTime)
     {
         float currentDuration = this._parent.Duration;
-        foreach (AudioTransitionData transitionData in this._transitions)
+        foreach (AudioTransitionDataWrapper transitionDataWrapper in this._transitions)
         {
+            AudioTransitionData transitionData = transitionDataWrapper.TransitionData;
             if(currentDuration >= transitionData.startDuration 
                 && this._previousDuration <= transitionData.startDuration
-                && transitionData.active)
+                && !transitionData.useEvent)
             {
-                this._parent.BeginTransition(transitionData.transitionClip, transitionData.transitionTime);
+                this.BeginTransition(transitionData);
                 break;
             }
         }
