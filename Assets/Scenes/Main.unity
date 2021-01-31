@@ -2633,8 +2633,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameState: {fileID: 0}
   Boss: {fileID: 1083861471}
+  Loc1: {fileID: 130569956}
   Selector1: {fileID: 1503748761}
   Option1: {fileID: 130569957}
+  Loc2: {fileID: 1639877738}
   Selector2: {fileID: 1982843914}
   Option2: {fileID: 1639877739}
   hasChoiceToMake: 0
@@ -3085,6 +3087,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 1870279510124617226, guid: 792cb01d26e3b0f409370c823262b101,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1e47c0fef436bbd44918532a6b83a357,
+        type: 3}
     - target: {fileID: 1870279511409537256, guid: 792cb01d26e3b0f409370c823262b101,
         type: 3}
       propertyPath: m_Value

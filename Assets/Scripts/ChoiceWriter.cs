@@ -7,8 +7,10 @@ public class ChoiceWriter : MonoBehaviour
 {
     public GlobalGameStateManager GameState;
     public BossController Boss; // this needs to be set each time by the Boss when it initializes
+    public Transform Loc1;
     public GameObject Selector1;
     public Text Option1;
+    public Transform Loc2;
     public GameObject Selector2;
     public Text Option2;
     private int selection = 0;
@@ -16,6 +18,7 @@ public class ChoiceWriter : MonoBehaviour
     public int stateKey;
     public ScriptData Script;
     public CanvasGroup Canvas;
+    private bool reversed = false;
 
 
     // Start is called before the first frame update
@@ -28,6 +31,14 @@ public class ChoiceWriter : MonoBehaviour
 
     public void SetChoice(int state)
     {
+        // randomly swap locations
+        if (Random.value > 0.5f)
+        {
+            Vector3 pos1 = Loc1.position;
+            Loc1.position = Loc2.position;
+            Loc2.position = pos1;
+            reversed = !reversed;
+        }
         InitWriter(true);
         hasChoiceToMake = true;
         stateKey = state;
@@ -63,9 +74,18 @@ public class ChoiceWriter : MonoBehaviour
 
     public void InitWriter(bool hasChoiceToMake)
     {
-        Selector1.SetActive(true);
-        Selector2.SetActive(false);
-        selection = 0;
+        if (reversed)
+        {
+            Selector2.SetActive(true);
+            Selector1.SetActive(false);
+        }
+        else
+        {
+            Selector1.SetActive(true);
+            Selector2.SetActive(false);
+        }
+
+        selection = reversed ? 1 : 0;
         this.hasChoiceToMake = hasChoiceToMake;
         Canvas.alpha = hasChoiceToMake ? 1f : 0f;
     }
