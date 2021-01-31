@@ -64,6 +64,7 @@ public class OverworldTypewriter : MonoBehaviour
         else
         {
             // todo: make textbox start sound
+            AudioSystem.playOneOff("writing");
             StartCoroutine(WriteText());
         }
     }
@@ -115,11 +116,18 @@ public class OverworldTypewriter : MonoBehaviour
                 {
                     if (Input.GetButtonDown("Interact")) // player continues
                     {
+                        AudioSystem.playOneOff("confirm");
                         AdvanceText();
                     }
                 }
                 else if (Input.GetButtonDown("Interact")) // player skip
                 {
+                    if (skipRequested == false)
+                    {
+                        // audio feedback that skip is requested
+                        AudioSystem.playOneOff("select");
+                    }
+                    
                     skipRequested = true;
                 }
             }
