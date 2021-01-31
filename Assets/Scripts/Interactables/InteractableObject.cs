@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 /// <summary>
 /// The interactable object monobehaviour.
 /// </summary>
@@ -25,7 +27,11 @@ public class InteractableObject : MonoBehaviour
         this._interactedHitbox.y = position.y;
         this._interactedHitbox.width = interactableWidth;
         this._interactedHitbox.height = interactableHeight;
+
+        this.OnStart();
     }
+
+    protected virtual void OnStart() { }
 
     /// <summary>
     /// Called when the object is enabled.
@@ -58,7 +64,7 @@ public class InteractableObject : MonoBehaviour
     /// Called when the object interacts with the player.
     /// </summary>
     /// <param name="controller">The player controller.</param>
-    public void OnInteract(PlayerController controller)
+    public virtual void OnInteract(PlayerController controller)
     {
         // TODO: Implementation.
         Debug.Log(this.name + " is being interactedddddddddddd");
