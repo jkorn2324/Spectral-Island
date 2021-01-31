@@ -91,6 +91,7 @@ public class InteractableObject : MonoBehaviour
             case "caveent":
                 if (success)
                 {
+                    AudioSystem.playOneOff("interactwin");
                     _typeWriter.SetText("cavesuccess");
                     FindObjectOfType<PlayerController>().gameObject.transform.position = PartnerObject.transform.position;
                 }
@@ -127,6 +128,7 @@ public class InteractableObject : MonoBehaviour
                 // this._typeWriter.SetText(interactableType);
                 if (success)
                 {
+                    AudioSystem.playOneOff("chop");
                     _typeWriter.SetText("treesuccess");
                     this.gameObject.SetActive(false);
                 }
