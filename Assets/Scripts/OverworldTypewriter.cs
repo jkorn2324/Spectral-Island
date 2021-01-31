@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class OverworldTypewriter : MonoBehaviour
 {
+    [SerializeField]
+    private LevelLoaderReference levelLoaderReference;
+    [SerializeField]
+    private LevelLoadData mainToMainMenuLoad;
+
     public GlobalGameStateManager GameState;
     public Text textBox;
     string[] textList;
@@ -53,7 +58,7 @@ public class OverworldTypewriter : MonoBehaviour
             GameState.ControlsLocked = false;
             if (lastText)
             {
-                // TODO: game over
+                this.levelLoaderReference.Loader?.LoadLevel(this.mainToMainMenuLoad);
             }
         }
         else
