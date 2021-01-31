@@ -16,9 +16,9 @@ public class GlobalGameStateManager : MonoBehaviour
     public const int rope = 3;
     public const int torch = 4;
     // inventory
-    public bool[] Inventory = new bool[4];
-    public bool[] BossWonStatus = new bool[4];
-    public bool[] BossSeenStatus = new bool[4];
+    public bool[] Inventory = new bool[5];
+    public bool[] BossWonStatus = new bool[5];
+    public bool[] BossSeenStatus = new bool[5];
 
     public bool HasItem(int item)
     {

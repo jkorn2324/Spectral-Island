@@ -58,6 +58,7 @@ public class OverworldTypewriter : MonoBehaviour
             GameState.ControlsLocked = false;
             if (lastText)
             {
+                Debug.Log("Game Over");
                 this.levelLoaderReference.Loader?.LoadLevel(this.mainToMainMenuLoad);
             }
         }
