@@ -16,6 +16,7 @@ public class InteractableObject : MonoBehaviour
     private Rect _interactedHitbox;
     public GlobalGameStateManager GameState;
     public int RequiredItem = 0;
+    public string InteractableKey;
 
     private void Start()
     {
@@ -62,7 +63,7 @@ public class InteractableObject : MonoBehaviour
 
     protected virtual bool CanInteract(PlayerController controller)
     {
-        return this.RequiredItem > 0 && GameState.HasItem(this.RequiredItem);
+        return this.RequiredItem == 0 || GameState.HasItem(this.RequiredItem);
     }
 
     /// <summary>
@@ -77,5 +78,8 @@ public class InteractableObject : MonoBehaviour
         }
     }
 
-    protected virtual void OnInteractSuccess(PlayerController controller) { }
+    protected virtual void OnInteractSuccess(PlayerController controller) {
+        Debug.Log("hi");
+
+    }
 }
