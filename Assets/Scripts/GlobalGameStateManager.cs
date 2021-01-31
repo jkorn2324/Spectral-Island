@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GlobalGameStateManager : MonoBehaviour
 {
+    // bosses
+    public GameObject[] BossReferences;
     // items
     public const int axe = 1;
     public const int vest = 2;
@@ -11,7 +13,8 @@ public class GlobalGameStateManager : MonoBehaviour
     public const int torch = 4;
     // inventory
     public bool[] Inventory = new bool[4];
-    public bool[] BossStatus = new bool[4];
+    public bool[] BossWonStatus = new bool[4];
+    public bool[] BossSeenStatus = new bool[4];
 
     public bool HasItem(int item)
     {
@@ -24,14 +27,36 @@ public class GlobalGameStateManager : MonoBehaviour
         // do special tilemap stuff here
     }
 
+    public void ActivateBoss(int key)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            BossReferences[i].SetActive(false);
+        }
+        BossReferences[key - 1].SetActive(true);
+        FindObjectOfType<TypeWriter>().SetBoss(key);
+        FindObjectOfType<ChoiceWriter>().SetBoss(key);
+        FindObjectOfType<TypeWriter>().SetText(key);
+    }
+
+    public bool SawBoss(int key)
+    {
+        return BossSeenStatus[key - 1];
+    }
+
+    public void SetBossSeen(int key)
+    {
+        BossSeenStatus[key - 1] = true;
+    }
+
     public bool WonBoss(int key)
     {
-        return BossStatus[key - 1];
+        return BossWonStatus[key - 1];
     }
 
     public void SetBossWon(int key)
     {
-        BossStatus[key - 1] = true;
+        BossWonStatus[key - 1] = true;
     }
 
     public enum gameMode

@@ -18,6 +18,12 @@ public class TypeWriter : MonoBehaviour
     private bool skipRequested = false;
 
 
+    public void SetBoss(int bossindex)
+    {
+        Boss = GameState.BossReferences[bossindex - 1].GetComponent<BossController>();
+        InitTypewriter(true);
+    }
+
     void Awake()
     {
         GameState = FindObjectOfType<GlobalGameStateManager>();

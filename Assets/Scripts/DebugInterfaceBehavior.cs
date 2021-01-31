@@ -44,13 +44,21 @@ public class DebugInterfaceBehavior : MonoBehaviour
         }
         if (Manager.GameMode == GlobalGameStateManager.gameMode.battle)
         {
-            if (GUI.Button(new Rect(10, 90, 200, 50), "Increase Boss HP", style))
+            if (GUI.Button(new Rect(10, 90, 200, 50), "Set Boss to Stabbed", style))
             {
-                Boss.ChangeHp(.5f);
+                Manager.ActivateBoss(1);
             }
-            if (GUI.Button(new Rect(10, 150, 200, 50), "Decrease Boss HP", style))
+            if (GUI.Button(new Rect(10, 150, 200, 50), "Set Boss to Drowned", style))
             {
-                Boss.ChangeHp(-.5f);
+                Manager.ActivateBoss(2);
+            }
+            if (GUI.Button(new Rect(10, 210, 200, 50), "Set Boss to Strangled", style))
+            {
+                Manager.ActivateBoss(3);
+            }
+            if (GUI.Button(new Rect(10, 270, 200, 50), "Set Boss to Burned", style))
+            {
+                Manager.ActivateBoss(4);
             }
         }
         //GUI.Label(new Rect(10, 70, 100, 50), $"More info about the player can be added here", style);

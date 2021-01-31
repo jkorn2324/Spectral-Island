@@ -21,6 +21,12 @@ public class ChoiceWriter : MonoBehaviour
     private bool reversed = false;
 
 
+    public void SetBoss(int bossindex)
+    {
+        Boss = GameState.BossReferences[bossindex - 1].GetComponent<BossController>();
+        InitWriter(false);
+    }
+
     // Start is called before the first frame update
     void Start()
     {

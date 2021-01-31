@@ -28,7 +28,7 @@ public class BossController : MonoBehaviour
         NpcWriter = FindObjectOfType<TypeWriter>();
         ChoiceWriter = FindObjectOfType<ChoiceWriter>();
         targetHp = hp;
-        AttachToWriter();
+        currentScriptKey = BossIndex;
     }
 
     public void SetChoice(int choice)
@@ -43,7 +43,6 @@ public class BossController : MonoBehaviour
     {
         NpcWriter.Boss = this;
         currentScriptKey = BossIndex;
-        NpcWriter.SetText(currentScriptKey);
     }
 
     public void ChangeHp(float delta)
@@ -83,6 +82,7 @@ public class BossController : MonoBehaviour
                             // success, do something here 
                             GameState.SetBossWon(BossIndex);
                         }
+                        GameState.SetBossSeen(BossIndex);
                         GameState.GiveItem(BossIndex);
                         GameState.GameMode = GlobalGameStateManager.gameMode.overworld;
                     }
@@ -128,7 +128,7 @@ public class BossController : MonoBehaviour
                 }
             }
             hpSlider.value = hp == 0 ? 0.01f : hp;
-            animator.SetFloat("hp", hp); // you can use this animator to set the sprite based on the hp, probably in discrete steps
+            //animator.SetFloat("hp", hp); // you can use this animator to set the sprite based on the hp, probably in discrete steps
         }
     }
 }
