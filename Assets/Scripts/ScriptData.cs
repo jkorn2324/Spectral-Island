@@ -328,6 +328,96 @@ public class ScriptData : MonoBehaviour
                                             "Goodbye.",
                                             "The Soul fades away." });
 
+        // boss 5: yourself
+        npcTextMap.Add(5, new string[] { "I see you’ve managed to find your friends.",
+                                         "How they remembered you and how you treated them…",
+                                         "I hope you know yourself better now." });
+
+        playerResponseMap.Add(51, "I feel like I’ve done a lot wrong.");
+        npcTextMap.Add(51, new string[] { "How does that feel?",
+                                          "How does it feel to see the pain of your friends?",
+                                          "Pain that you caused?" });
+
+        playerResponseMap.Add(511, "I feel so much regret.");
+        npcTextMap.Add(511, new string[] { "You acknowledge that you hurt people who mattered to you.",
+                                           "Now you learned.",
+                                           "And you can go forward from this.",
+                                           "You can do better for those around you.",
+                                           "And you can do better for yourself." });
+
+        playerResponseMap.Add(5111, "… I will do better.");
+        npcTextMap.Add(5111, new string[] { "It won’t be easy.",
+                                            "And it will be hard to look back on your mistakes.",
+                                            "Even if you do so to learn from them.",
+                                            "But as long as you remain resolute, you will make progress.",
+                                            "You can change." });
+
+        playerResponseMap.Add(5112, "But… isn’t it too late?");
+        npcTextMap.Add(5112, new string[] { "…",
+                                            "You’re giving up too easily.",
+                                            "Your past mistakes and misdeeds, no matter how heinous you think they are…",
+                                            "Should be things you learn from.",
+                                            "Not everyone will forgive you, but you should strive to be better regardless.",
+                                            "Not just for others, but for yourself." });
+
+        playerResponseMap.Add(512, "I can’t believe I caused so much pain.");
+        npcTextMap.Add(512, new string[] { "But you saw their pain with your own eyes.",
+                                           "What good will come of denying it?" });
+
+        playerResponseMap.Add(5121, "… I guess I can only go forward.");
+        npcTextMap.Add(5121, new string[] { "You can move on with your life.",
+                                            "But I think you’ll put yourself through more trouble by forgetting what you've seen here.",
+                                            "You’ll repeat the same mistakes.",
+                                            "Instead, remember this experience.",
+                                            "Carry it with you so you don’t cause the same pain again." });
+
+        playerResponseMap.Add(5122, "Nothing, but… I would rather forget.");
+        npcTextMap.Add(5122, new string[] { "You can choose to forget.",
+                                            "But I think you’ll put yourself through more trouble by doing that.",
+                                            "You’ll repeat the same mistakes.",
+                                            "Instead, remember this experience.",
+                                            "Carry it with you so you don’t cause the same pain again." });
+
+        playerResponseMap.Add(52, "I didn’t realize I was hurting them.");
+        npcTextMap.Add(52, new string[] { "But now you saw their perspectives.",
+                                          "You saw the aftermath of their pain from your actions.",
+                                          "All plain as day." });
+
+        playerResponseMap.Add(521, "Can I do anything to take away their pain?");
+        npcTextMap.Add(521, new string[] { "You know how you hurt them.",
+                                           "If you see them again, you can be considerate of their feelings.",
+                                           "They even told you what would help them." });
+
+        playerResponseMap.Add(5211, "Will they forgive me?");
+        npcTextMap.Add(5211, new string[] { "They may forgive you readily.",
+                                            "But they may not.",
+                                            "They may also give you a second chance, but you have to show your change in actions.",
+                                            "Regardless of what happens, I do hope you grow from this." });
+
+        playerResponseMap.Add(5212, "But I was so terrible to them.");
+        npcTextMap.Add(5212, new string[] { "That is true.",
+                                            "But just because you’ve done something bad in the past, doesn’t mean you will be a bad person forever.",
+                                            "Unless you choose to give up right here.",
+                                            "Which if you are, I have nothing more to say." });
+
+        playerResponseMap.Add(522, "Can I reverse everything that happened?");
+        npcTextMap.Add(522, new string[] { "What’s done cannot be erased.",
+                                           "Your friends will remember how you hurt them.",
+                                           "And you’ll carry the weight of your actions.",
+                                           "Unless you are willing to learn from this." });
+
+        playerResponseMap.Add(5221, "… How can I go forward from this?");
+        npcTextMap.Add(5221, new string[] { "Didn’t your friends tell you what you did wrong?",
+                                            "And how you can do good by them in the future?",
+                                            "Even if they all didn’t forgive you, you still have others in the future you will meet.",
+                                            "You can do good by them by remembering what happened here." });
+
+        playerResponseMap.Add(5222, "Please… just let me forget.");
+        npcTextMap.Add(5222, new string[] { "So you choose denial.",
+                                            "Then your growth shall stagnate.",
+                                            "You can’t truly move forward until you are willing to learn from this.",
+                                            "Unless you show a willingness to change, you will repeat the same mistakes." });
+
 
         overworldTextMap.Add("test", new string[] { "hello", "goodbye" });
         overworldTextMap.Add("start", new string[] { "You're looking for your friends.", "Move with WASD or the arrow keys.", "Interact with the space bar or the c key." });
