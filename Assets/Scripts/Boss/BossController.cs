@@ -81,7 +81,7 @@ public class BossController : MonoBehaviour
                         if (hp == 1f)
                         {
                             // success, do something here 
-                            GameState.BossStatus[BossIndex] = true;
+                            GameState.SetBossWon(BossIndex);
                         }
                         GameState.GiveItem(BossIndex);
                         GameState.GameMode = GlobalGameStateManager.gameMode.overworld;
