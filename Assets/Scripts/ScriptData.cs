@@ -330,7 +330,7 @@ public class ScriptData : MonoBehaviour
 
 
         overworldTextMap.Add("test", new string[] { "hello", "goodbye" });
-        overworldTextMap.Add("start", new string[] { "I'm looking for my friends." });
+        overworldTextMap.Add("start", new string[] { "You're looking for my friends.", "Move with WASD or the arrow keys.", "Interact with the space bar or the c key." });
         overworldTextMap.Add("treesuccess", new string[] { "You hack at the tree with the machete. It eventually falls." });
         overworldTextMap.Add("treefail", new string[] { "The wood on the tree is starting to give.", "You could probably cut this down if you had something sharp" });
         overworldTextMap.Add("cliffsuccess", new string[] { "Using the rope, you carefully climb the cliff." });
