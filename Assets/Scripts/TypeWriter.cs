@@ -49,6 +49,7 @@ public class TypeWriter : MonoBehaviour
         else
         {
             // todo: make textbox start sound
+            AudioSystem.playOneOff("writing");
             StartCoroutine(WriteText());
         }
     }

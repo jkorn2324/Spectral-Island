@@ -28,19 +28,21 @@ public class AudioSystem : MonoBehaviour
     private AudioTrackData trackData;
 
     private AudioTrack _tracks;
-
-    private Dictionary<string, AudioClip> _nameToOneOff = new Dictionary<string, AudioClip>();
-    private AudioSource _oneOffAudioSource = null;
+    private Dictionary<string, AudioSource> _nameToOneOffSource = new Dictionary<string, AudioSource>();
 
     /// <summary>
     /// Easy hook to play any oneOff AudioClip
     /// </summary>
     public void playOneOffHelper(string name, float volumeScale=1.0f)
     {
-        AudioClip clip;
-        if (_nameToOneOff.TryGetValue(name, out clip))
+        AudioSource source;
+        if (_nameToOneOffSource.TryGetValue(name, out source))
         {
-            _oneOffAudioSource.PlayOneShot(clip, volumeScale);
+            if (!source.isPlaying)
+            {
+                source.volume = volumeScale;
+                source.Play();
+            }
         }
         else
         {
@@ -63,9 +65,11 @@ public class AudioSystem : MonoBehaviour
         }
 
         foreach(AudioClip clip in Resources.LoadAll<AudioClip>("Audio")){
-            _nameToOneOff.Add(clip.name, clip);
+            AudioSource a = this.gameObject.AddComponent<AudioSource>();
+            a.clip = clip;
+            a.loop = false;
+            _nameToOneOffSource.Add(clip.name, a);
         }
-        this._oneOffAudioSource = this.gameObject.AddComponent<AudioSource>();
     }
 
     private void OnEnable()
