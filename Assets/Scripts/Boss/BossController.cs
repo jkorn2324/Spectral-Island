@@ -34,6 +34,7 @@ public class BossController : MonoBehaviour
     public void SetChoice(int choice)
     {
         waitingForChoice = false;
+        ChangeHp(choice == 1 ? -0.5f : 0.5f);
         playerChoice = choice;
 
     }
