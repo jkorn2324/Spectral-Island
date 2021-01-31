@@ -438,7 +438,7 @@ public class ScriptData : MonoBehaviour
         overworldTextMap.Add("burned_boss", new string[] { "You find your friend.", "They've been set alight." });
         overworldTextMap.Add("gottorch", new string[] { "You obtained a torch." });
         overworldTextMap.Add("final_boss", new string[] { "It's you.", "You stare at yourself.", "You stare back." });
-        overworldTextMap.Add("gotend", new string[] { "Buy Plato's Republic." });
+        overworldTextMap.Add("gotend", new string[] { "The island and the specters fade. Leaving you alone with your own reflection." });
 
         //// drowned has 5 phases
         //npcTextArray[drowned] = new string[5][][];
