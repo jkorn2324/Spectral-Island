@@ -330,6 +330,10 @@ public class ScriptData : MonoBehaviour
 
 
         overworldTextMap.Add("test", new string[] { "hello", "goodbye" });
+        overworldTextMap.Add("stabbed_boss", new string[] { "stabbed boss opening line", "template" });
+        overworldTextMap.Add("drowned_boss", new string[] { "drowned boss opening line", "template" });
+        overworldTextMap.Add("strangled_boss", new string[] { "strangled boss opening line", "template" });
+        overworldTextMap.Add("burned_boss", new string[] { "burned boss opening line", "template" });
 
         //// drowned has 5 phases
         //npcTextArray[drowned] = new string[5][][];

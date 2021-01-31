@@ -31,8 +31,8 @@ public class PlayerInteractController
 
     public PlayerInteractController(PlayerController parent, PlayerInteractData interactData)
     {
-        this._parent = parent;
-        this._interactData = interactData;
+        //this._parent = parent;
+        //this._interactData = interactData;
     }
 
     /// <summary>
@@ -40,25 +40,25 @@ public class PlayerInteractController
     /// </summary>
     public void Update()
     {
-        Rect rect = this.GenerateHitboxRect();
-        Debug.DrawLine(this.Position, rect.position);
-        if (!this.HasInteractButtonDown)
-        {
-            return;
-        }
+        //Rect rect = this.GenerateHitboxRect();
+        //Debug.DrawLine(this.Position, rect.position);
+        //if (!this.HasInteractButtonDown)
+        //{
+        //    return;
+        //}
 
-        InteractableObject interactableObject =
-            InteractableObjectSet.GetClosestObjectTo(rect.position);
-        if (interactableObject == null)
-        {
-            return;
-        }
+        //InteractableObject interactableObject =
+        //    InteractableObjectSet.GetClosestObjectTo(rect.position);
+        //if (interactableObject == null)
+        //{
+        //    return;
+        //}
            
-        // Calls to interact with the object.
-        if (interactableObject.IsOverlappingWith(rect))
-        {
-            interactableObject.OnInteract(this._parent);
-        }
+        //// Calls to interact with the object.
+        //if (interactableObject.IsOverlappingWith(rect))
+        //{
+        //    interactableObject.OnInteract(this._parent);
+        //}
     }
 
     /// <summary>

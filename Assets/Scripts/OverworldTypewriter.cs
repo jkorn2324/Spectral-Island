@@ -16,6 +16,7 @@ public class OverworldTypewriter : MonoBehaviour
     private bool shouldWrite;
     private bool skipRequested = false;
     public CanvasGroup Canvas;
+    public int QueuedBoss = -1;
 
 
     void Awake()
@@ -38,6 +39,11 @@ public class OverworldTypewriter : MonoBehaviour
         if (currentTextIndex >= textList.Length)
         {
             InitTypewriter(false);
+            if (QueuedBoss != -1)
+            {
+                GameState.ActivateBoss(QueuedBoss);
+                QueuedBoss = -1;
+            }
         }
         else
         {

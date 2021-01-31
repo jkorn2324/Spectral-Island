@@ -19,10 +19,6 @@ public class InteractedSound
 public class InteractableObject : MonoBehaviour
 {
     [SerializeField]
-    private float interactableWidth;
-    [SerializeField]
-    private float interactableHeight;
-    [SerializeField]
     private int requiredItem = 0;
     [SerializeField]
     private string interactableType;
@@ -31,13 +27,17 @@ public class InteractableObject : MonoBehaviour
 
     private AudioSource _audioSource;
 
-    private Rect _interactedHitbox;
-
+    public BoxCollider2D InteractBox;
     private GlobalGameStateManager _gameState;
     private OverworldTypewriter _typeWriter;
 
+    public void OnDrawGizmos()
+    {
+    }
+
     private void Start()
     {
+        InteractBox = GetComponent<BoxCollider2D>();
         this._gameState = FindObjectOfType<GlobalGameStateManager>();
         this._typeWriter = FindObjectOfType<OverworldTypewriter>();
 
@@ -45,12 +45,6 @@ public class InteractableObject : MonoBehaviour
 
         Vector3 position = this.transform.position;
         
-        this._interactedHitbox = new Rect();
-        this._interactedHitbox.x = position.x - (interactableWidth / 2.0f);
-        this._interactedHitbox.y = position.y + (interactableHeight / 2.0f);
-        this._interactedHitbox.width = interactableWidth;
-        this._interactedHitbox.height = interactableHeight;
-
         this.OnStart();
     }
 
@@ -61,7 +55,6 @@ public class InteractableObject : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        InteractableObjectSet.AddInteractableObject(this);
     }
 
     /// <summary>
@@ -69,41 +62,20 @@ public class InteractableObject : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
-        InteractableObjectSet.RemoveInteractableObject(this);
     }
 
-    /// <summary>
-    /// Determines whether the interactable object's interaction hitbox
-    /// overlaps with the input rectangle.
-    /// </summary>
-    /// <param name="controller">The input rectangle..</param>
-    /// <returns>A boolean that returns true if they overlap.</returns>
-    public bool IsOverlappingWith(Rect rect)
+    public void InteractIfPossible()
     {
-        return rect.Overlaps(this._interactedHitbox);
-    }
-
-    protected virtual bool CanInteract(PlayerController controller)
-    {
-        return this.requiredItem == 0 || this._gameState.HasItem(this.requiredItem);
-    }
-
-    /// <summary>
-    /// Called when the object interacts with the player.
-    /// </summary>
-    /// <param name="controller">The player controller.</param>
-    public void OnInteract(PlayerController controller)
-    {
-        if(this.CanInteract(controller))
+        Debug.Log("Interact if possible");
+        if (requiredItem == 0 || _gameState.HasItem(requiredItem))
         {
-            this.OnInteractSuccess(controller);
+            Interact();
         }
     }
 
-    protected virtual void OnInteractSuccess(PlayerController controller) 
+    public void Interact() 
     {
         // TODO: Set this.
-
         this.PlaySound(this.interactedSound);
 
         switch(this.interactableType.Trim().ToLower())
@@ -114,12 +86,26 @@ public class InteractableObject : MonoBehaviour
             case "tree":
                 // TODO: remove the interactable
                 // this._typeWriter.SetText(interactableType);
+                Debug.Log("found tree");
                 break;
-            case "generic_message":
+            case "stabbed_boss":
                 // this._typeWriter.SetText(interactableType);
+                this._typeWriter.QueuedBoss = 1;
                 break;
-            case "generic_boss":
+            case "drowned_boss":
                 // this._typeWriter.SetText(interactableType);
+                this._typeWriter.QueuedBoss = 2;
+                break;
+            case "strangled_boss":
+                // this._typeWriter.SetText(interactableType);
+                this._typeWriter.QueuedBoss = 3;
+                break;
+            case "burned_boss":
+                // this._typeWriter.SetText(interactableType);
+                this._typeWriter.QueuedBoss = 4;
+                break;
+            default:
+                this._typeWriter.SetText(this.interactableType.Trim().ToLower());
                 break;
         }
     }

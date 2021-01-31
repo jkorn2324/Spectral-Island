@@ -8,31 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4474359341753014543}
+  - component: {fileID: 7677957139025196219}
   - component: {fileID: 6936623143484211838}
   - component: {fileID: 1182992356550896209}
   - component: {fileID: -179546086343092060}
-  m_Layer: 0
+  - component: {fileID: 2927739389697964759}
+  m_Layer: 9
   m_Name: ChoppableCherryTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4474359341753014543
-Transform:
+--- !u!224 &7677957139025196219
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3240007456474268104}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -78.05, y: 52.94, z: 20.232422}
+  m_LocalPosition: {x: 0, y: 0, z: 20.232422}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -78.05, y: 52.94}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &6936623143484211838
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -192,10 +198,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e8cb85cead0d554180498d9eac8c1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableWidth: 3
-  interactableHeight: 3
   requiredItem: 0
   interactableType: Tree
   interactedSound:
     audioClip: {fileID: 0}
     volume: 0
+  InteractBox: {fileID: 0}
+--- !u!61 &2927739389697964759
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3240007456474268104}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
