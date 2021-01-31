@@ -330,13 +330,15 @@ public class ScriptData : MonoBehaviour
 
 
         overworldTextMap.Add("test", new string[] { "hello", "goodbye" });
-        overworldTextMap.Add("start", new string[] { "You're looking for my friends.", "Move with WASD or the arrow keys.", "Interact with the space bar or the c key." });
+        overworldTextMap.Add("start", new string[] { "You're looking for your friends.", "Move with WASD or the arrow keys.", "Interact with the space bar or the c key." });
         overworldTextMap.Add("treesuccess", new string[] { "You hack at the tree with the machete. It eventually falls." });
         overworldTextMap.Add("treefail", new string[] { "The wood on the tree is starting to give.", "You could probably cut this down if you had something sharp" });
         overworldTextMap.Add("cliffsuccess", new string[] { "Using the rope, you carefully climb the cliff." });
         overworldTextMap.Add("clifffail", new string[] { "The cliff is steep. There are handholds, but they are small.", "You could probably climb this with a rope" });
         overworldTextMap.Add("shallowsuccess", new string[] { "You put on your life vest and wade across." });
         overworldTextMap.Add("shallowfail", new string[] { "You can't swim, but this water is shallow.", "You could probably cross it with a life vest." });
+        overworldTextMap.Add("cavesuccess", new string[] { "You light your torch and step into the darkness." });
+        overworldTextMap.Add("cavefail", new string[] { "The cave is so dark you cannot see your hand in front of you.", "You should probably bring a torch." });
         overworldTextMap.Add("stabbed_boss", new string[] { "You find your friend.", "They've been stabbed with a machete." });
         overworldTextMap.Add("gotaxe", new string[] { "You obtained a machete." });
         overworldTextMap.Add("drowned_boss", new string[] { "You find your friend.", "They're drowning in the ocean." });

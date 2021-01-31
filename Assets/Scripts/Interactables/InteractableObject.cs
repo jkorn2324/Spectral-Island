@@ -88,6 +88,17 @@ public class InteractableObject : MonoBehaviour
 
         switch(this.interactableType.Trim().ToLower())
         {
+            case "caveent":
+                if (success)
+                {
+                    _typeWriter.SetText("cavesuccess");
+                    FindObjectOfType<PlayerController>().gameObject.transform.position = PartnerObject.transform.position;
+                }
+                else
+                {
+                    _typeWriter.SetText("cavefail");
+                }
+                break;
             case "shallowshore":
                 if (success)
                 {
