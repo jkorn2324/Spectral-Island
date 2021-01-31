@@ -3,6 +3,10 @@
 public class PlayerController : MonoBehaviour
 {
     public GlobalGameStateManager GameState;
+    const int ANIMUP = 0;
+    const int ANIMDOWN = 1;
+    const int ANIMSIDE = 2;
+
     public enum Direction
     {
         LEFT = 0,
@@ -89,6 +93,32 @@ public class PlayerController : MonoBehaviour
     {
         //anim.SetBool("isWalking", isWalking);
         // todo: set animator int for up/down/side direction
+        int animface = -1;
+        if (facingDirection == Direction.UP)
+        {
+            animface = ANIMUP;
+        }
+        else if (facingDirection == Direction.DOWN)
+        {
+            animface = ANIMDOWN;
+        }
+        else
+        {
+            animface = ANIMSIDE;
+        }
+        FlipSprite();
+    }
+
+    public void FlipSprite()
+    {
+        if (facingDirection == Direction.LEFT)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
     }
 
     private void CheckInput()
