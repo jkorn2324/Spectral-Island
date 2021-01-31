@@ -34,7 +34,6 @@ public class TypeWriter : MonoBehaviour
 
     public void SetText(int key)
     {
-        Debug.Log($"KEY: {key}");
         InitTypewriter(true);
         textList = Script.npcTextMap[key];
     }
@@ -93,13 +92,11 @@ public class TypeWriter : MonoBehaviour
                 {
                     if (Input.GetButtonDown("Interact")) // player continues
                     {
-                        UnityEngine.Debug.Log("Advance Text");
                         AdvanceText();
                     }
                 }
                 else if (Input.GetButtonDown("Interact")) // player skip
                 {
-                    UnityEngine.Debug.Log("Text Skip Requested");
                     skipRequested = true;
                 }
             }
