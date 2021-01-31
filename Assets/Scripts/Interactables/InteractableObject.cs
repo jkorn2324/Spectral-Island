@@ -12,10 +12,13 @@ public class InteractableObject : MonoBehaviour
     private float interactableHeight;
 
     private Rect _interactedHitbox;
+    public GlobalGameStateManager GameState;
+    public int RequiredItem = -1;
 
     private void Start()
     {
         Vector3 position = this.transform.position;
+        GameState = FindObjectOfType<GlobalGameStateManager>();
         
         this._interactedHitbox = new Rect();
         this._interactedHitbox.x = position.x;
@@ -59,5 +62,16 @@ public class InteractableObject : MonoBehaviour
     {
         // TODO: Implementation.
         Debug.Log(this.name + " is being interactedddddddddddd");
+        if (RequiredItem != -1)
+        {
+            if (GameState.HasItem(RequiredItem))
+            {
+                Debug.Log("Succesfully interacted");
+            }
+            else
+            {
+                Debug.Log("Need item to interact");
+            }
+        }
     }
 }

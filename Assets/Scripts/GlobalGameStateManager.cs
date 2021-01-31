@@ -4,6 +4,24 @@ using UnityEngine;
 
 public class GlobalGameStateManager : MonoBehaviour
 {
+    // items
+    public const int axe = 0;
+    public const int torch = 1;
+    public const int rope = 2;
+    public const int vest = 3;
+    // inventory
+    public bool[] inventory = new bool[4];
+
+    public bool HasItem(int item)
+    {
+        return inventory[item];
+    }
+
+    public void GiveItem(int item)
+    {
+        inventory[item] = true;
+    }
+
     public enum gameMode
     {
         menu, // currently unused (probably start menu or something)
