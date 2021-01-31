@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7dfdfbca27204ea340f2cfe2f1011, type: 3}
   m_Name: MainToMainMenu
   m_EditorClassIdentifier: 
-  levelToLoad: Main
+  levelToLoad: MainMenu
   showLoadingScreen: 0
   minLoadTime: 0
   maxLoadTime: 0
