@@ -5,10 +5,10 @@ using UnityEngine;
 public class GlobalGameStateManager : MonoBehaviour
 {
     // items
-    public const int axe = 0;
-    public const int torch = 1;
-    public const int rope = 2;
-    public const int vest = 3;
+    public const int axe = 1;
+    public const int torch = 2;
+    public const int rope = 3;
+    public const int vest = 4;
     // inventory
     public bool[] inventory = new bool[4];
 

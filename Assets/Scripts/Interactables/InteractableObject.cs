@@ -13,7 +13,7 @@ public class InteractableObject : MonoBehaviour
 
     private Rect _interactedHitbox;
     public GlobalGameStateManager GameState;
-    public int RequiredItem = -1;
+    public int RequiredItem = 0;
 
     private void Start()
     {
@@ -62,7 +62,7 @@ public class InteractableObject : MonoBehaviour
     {
         // TODO: Implementation.
         Debug.Log(this.name + " is being interactedddddddddddd");
-        if (RequiredItem != -1)
+        if (RequiredItem > 0)
         {
             if (GameState.HasItem(RequiredItem))
             {

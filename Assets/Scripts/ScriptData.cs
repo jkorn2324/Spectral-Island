@@ -6,8 +6,10 @@ public class ScriptData : MonoBehaviour
 {
     //const int numBosses = 4;
     // first index is boss number
-    //const int drowned = 1;
-    //const int stabbed = 2;
+    //const int stabbed = 1;
+    //const int drowned = 2;
+    //const int strangled = 3;
+    //const int burned = 4;
     //// second index is phase
     //const int entry = 0;
     //const int first = 1;

@@ -71,6 +71,20 @@ public class BossController : MonoBehaviour
                 {
                     // we're at the end of the script sequence
                     // todo: get out of this fight. should update any flags and ask the globalgamestatemanager to swap us back to the overworld state
+                    if (hp != targetHp)
+                    {
+                        // wait for hp to update
+                    }
+                    else
+                    {
+                        scriptSeen = false;
+                        if (hp == 1f)
+                        {
+                            // success, give item
+                            GameState.GiveItem(BossIndex);
+                        }
+                        GameState.GameMode = GlobalGameStateManager.gameMode.overworld;
+                    }
                 }
                 else
                 {
