@@ -40,12 +40,12 @@ public class ScriptData : MonoBehaviour
         npcTextMap.Add(111, new string[] { "You always praised me and told me how perfect I was.", "But you were amazing too." });
 
         playerResponseMap.Add(1111, "Can we start over?");
-        npcTextMap.Add(1111, new string[] { "I can’t quite forgive you yet.", "But I am willing to start over so long as we don’t keep our feelings secret anymore." });
+        npcTextMap.Add(1111, new string[] { "I can’t quite forgive you yet.", "But I am willing to start over so long as we don’t keep our feelings secret anymore.", "You revived this Soul!" });
 
-        playerResponseMap.Add(1112, "");
-        npcTextMap.Add(1112, new string[] { });
+        playerResponseMap.Add(1112, "I couldn’t stand you because you were so perfect.");
+        npcTextMap.Add(1112, new string[] { "I may have been perfect in your eyes.", "But I didn’t quite think so highly of myself.", "It makes your betraying me more ironic, doesn’t it?", "The Soul fades away" });
 
-        playerResponseMap.Add(112, "");
+        playerResponseMap.Add(112, "You could do everything and I couldn’t.");
         npcTextMap.Add(112, new string[] { });
 
         playerResponseMap.Add(1121, "");
