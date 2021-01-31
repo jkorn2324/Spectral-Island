@@ -121,7 +121,6 @@ public class PlayerController : MonoBehaviour
             Debug.DrawRay(this.transform.position, new Vector3(direction.x, direction.y, -1000f));
             if (hit)
             {
-                Debug.Log($"Attempting to interact with: {hit.collider.gameObject.name}");
                 hit.collider.gameObject.GetComponent<InteractableObject>()?.InteractIfPossible();
             }
         }

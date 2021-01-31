@@ -29,7 +29,6 @@ public class OverworldTypewriter : MonoBehaviour
 
     public void SetText(string key)
     {
-        Debug.Log($"KEY: {key}");
         GameState.ControlsLocked = true;
         InitTypewriter(true);
         textList = Script.overworldTextMap[key];
@@ -102,13 +101,11 @@ public class OverworldTypewriter : MonoBehaviour
                 {
                     if (Input.GetButtonDown("Interact")) // player continues
                     {
-                        UnityEngine.Debug.Log("Advance Text");
                         AdvanceText();
                     }
                 }
                 else if (Input.GetButtonDown("Interact")) // player skip
                 {
-                    UnityEngine.Debug.Log("Text Skip Requested");
                     skipRequested = true;
                 }
             }

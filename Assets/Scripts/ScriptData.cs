@@ -336,13 +336,13 @@ public class ScriptData : MonoBehaviour
         overworldTextMap.Add("clifffail", new string[] { "The cliff is steep. There are handholds, but they are small.", "You could probably climb this with a rope" });
         overworldTextMap.Add("shallowsuccess", new string[] { "You put on your life vest and wade across." });
         overworldTextMap.Add("shallowfail", new string[] { "You can't swim, but this water is shallow.", "You could probably cross it with a life vest." });
-        overworldTextMap.Add("stabbed_boss", new string[] { "stabbed boss opening line", "template" });
+        overworldTextMap.Add("stabbed_boss", new string[] { "You find your friend.", "They've been stabbed with a machete." });
         overworldTextMap.Add("gotaxe", new string[] { "You obtained a machete." });
-        overworldTextMap.Add("drowned_boss", new string[] { "drowned boss opening line", "template" });
+        overworldTextMap.Add("drowned_boss", new string[] { "You find your friend.", "They're drowning in the ocean." });
         overworldTextMap.Add("gotvest", new string[] { "You obtained a life vest." });
-        overworldTextMap.Add("strangled_boss", new string[] { "strangled boss opening line", "template" });
+        overworldTextMap.Add("strangled_boss", new string[] { "You find your friend.", "They're hanging from the lighthouse." });
         overworldTextMap.Add("gotrope", new string[] { "You obtained a rope." });
-        overworldTextMap.Add("burned_boss", new string[] { "burned boss opening line", "template" });
+        overworldTextMap.Add("burned_boss", new string[] { "You find your friend.", "They've been set alight." });
         overworldTextMap.Add("gottorch", new string[] { "You obtained a torch." });
 
         //// drowned has 5 phases
