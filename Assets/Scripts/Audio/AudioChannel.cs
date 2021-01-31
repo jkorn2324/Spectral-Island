@@ -88,11 +88,13 @@ public class AudioChannel
                     this._activeClip = this._clips[this._currentTransition.NewActiveClip.ClipName];
                     this._currentTransition = null;
                 }
-                return;
             }
         }
 
-        this._activeClip?.Update(deltaTime);
+        foreach(ChannelClip clip in this._clips.Values)
+        {
+            clip.Update(deltaTime);
+        }
     }
 
     /// <summary>
@@ -103,7 +105,7 @@ public class AudioChannel
         this._activeClip = this.OriginalClip;
         foreach(ChannelClip clip in this._clips.Values)
         {
-            clip.OnTrackBegin();
+            clip.OnTrackBegin(this._activeClip.ClipName == clip.ClipName);
         }
     }
 
@@ -206,9 +208,9 @@ public class ChannelClip
         }
     }
 
-    public void OnTrackBegin()
+    public void OnTrackBegin(bool isActive)
     {
-        this._currentVolume = this.ActiveVolume;
+        this._currentVolume = isActive ? this.ActiveVolume : 0.0f;
         this._clipAudioSource.Play();
     }
 
