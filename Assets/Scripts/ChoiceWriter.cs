@@ -63,10 +63,12 @@ public class ChoiceWriter : MonoBehaviour
                 // wait for the choice
                 if ((Input.GetButtonDown("Down") && !Input.GetButtonDown("Up")) || (Input.GetButtonDown("Up") && !Input.GetButtonDown("Down")))
                 {
+                    AudioSystem.playOneOff("select");
                     SwapSelection();
                 }
                 if (Input.GetButtonDown("Interact"))
                 {
+                    AudioSystem.playOneOff("confirm");
                     Boss.SetChoice(selection + 1); // remember that these are 1-indexed
                     InitWriter(false);
                 }
