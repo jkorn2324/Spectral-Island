@@ -285,7 +285,8 @@ public class ScriptData : MonoBehaviour
         playerResponseMap.Add(4121, "I… didn’t know.");
         npcTextMap.Add(4121, new string[] { "Hmm.",
                                             "I never did tell you any of this.",
-                                            "I wanted to part from you when you had a dream for yourself, but a time for an amicable parting never came.",
+                                            "I wanted to part from you when you had a dream for yourself.",
+                                            "But a time for an amicable parting never came.",
                                             "The Soul fades away." });
 
         playerResponseMap.Add(4122, "But I want us to be together!");
@@ -299,11 +300,13 @@ public class ScriptData : MonoBehaviour
 
         playerResponseMap.Add(421, "… I know. But I didn't know what else to do.");
         npcTextMap.Add(421, new string[] { "There came a point where I wanted to fulfill my own dreams.",
-                                           "And I would’ve been happy seeing you pursue your own goals too, even if we couldn’t be together." });
+                                           "And I would’ve been happy seeing you pursue your own goals too.",
+                                           "Even if we couldn’t be together." });
 
         playerResponseMap.Add(4211, "I will try to find my own way. I won’t forget you.");
         npcTextMap.Add(4211, new string[] { "Nor I you.",
-                                            "But I hope that the next time we meet, we’ll both be in better places in our lives.",
+                                            "But I hope that the next time we meet,",
+                                            "We’ll both be in better places in our lives.",
                                             "The Soul fades away with a smile." });
 
         playerResponseMap.Add(4212, "It seems so hard though.");
