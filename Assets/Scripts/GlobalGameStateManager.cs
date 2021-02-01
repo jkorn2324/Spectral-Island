@@ -78,6 +78,7 @@ public class GlobalGameStateManager : MonoBehaviour
 
     public void SetBossSeen(int key)
     {
+        exitBossFightAudio.Call();
         BossSeenStatus[key - 1] = true;
     }
 
@@ -88,7 +89,6 @@ public class GlobalGameStateManager : MonoBehaviour
 
     public void SetBossWon(int key)
     {
-        exitBossFightAudio.Call();
         BossWonStatus[key - 1] = true;
     }
 
