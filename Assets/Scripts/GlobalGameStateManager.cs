@@ -5,6 +5,12 @@ using UnityEngine.Tilemaps;
 
 public class GlobalGameStateManager : MonoBehaviour
 {
+    [SerializeField]
+    public GameEvent intoBossFightAudio;
+
+    [SerializeField]
+    public GameEvent exitBossFightAudio;
+
     public GameObject[] BossSprites;
     public TilemapCollider2D SwimmableWater;
     public bool ControlsLocked = false;
@@ -54,6 +60,7 @@ public class GlobalGameStateManager : MonoBehaviour
     public void ActivateBoss(int key)
     {
         GameMode = gameMode.battle;
+        intoBossFightAudio.Call();
         for (int i = 0; i < 5; i++)
         {
             BossReferences[i].SetActive(false);
@@ -81,6 +88,7 @@ public class GlobalGameStateManager : MonoBehaviour
 
     public void SetBossWon(int key)
     {
+        exitBossFightAudio.Call();
         BossWonStatus[key - 1] = true;
     }
 

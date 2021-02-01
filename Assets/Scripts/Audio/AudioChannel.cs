@@ -112,7 +112,7 @@ public class AudioChannel
     /// </summary>
     public void OnTrackBegin()
     {
-        this._activeClip = this.OriginalClip;
+        //this._activeClip = this.OriginalClip;
         foreach(ChannelClip clip in this._clips.Values)
         {
             clip.OnTrackBegin(this._activeClip.ClipName == clip.ClipName);
@@ -204,6 +204,7 @@ public class ChannelClip
     {
         this._clipGameObject = new GameObject(this._currentClip.clipName);
         this._clipAudioSource = this._clipGameObject.AddComponent<AudioSource>();
+        this._clipAudioSource.loop = true;
         this._clipAudioSource.clip = this._currentClip.clip;
         this._clipAudioSource.volume = this._currentVolume;
         this._clipAudioSource.playOnAwake = false;
