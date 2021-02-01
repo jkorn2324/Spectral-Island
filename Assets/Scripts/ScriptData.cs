@@ -285,7 +285,8 @@ public class ScriptData : MonoBehaviour
         playerResponseMap.Add(4121, "I… didn’t know.");
         npcTextMap.Add(4121, new string[] { "Hmm.",
                                             "I never did tell you any of this.",
-                                            "I wanted to part from you when you had a dream for yourself, but a time for an amicable parting never came.",
+                                            "I wanted to part from you when you had a dream for yourself.",
+                                            "But a time for an amicable parting never came.",
                                             "The Soul fades away." });
 
         playerResponseMap.Add(4122, "But I want us to be together!");
