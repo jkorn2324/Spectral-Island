@@ -38,7 +38,7 @@ public class ChoiceWriter : MonoBehaviour
     public void SetChoice(int state)
     {
         // randomly swap locations
-        if (Random.value > 1f) // todo: set this back to 0.5f
+        if (Random.value > .5f) //1f) // todo: set this back to 0.5f
         {
             Vector3 pos1 = Loc1.position;
             Loc1.position = Loc2.position;
