@@ -16,6 +16,7 @@ public class MainMenuManager : MonoBehaviour
     /// <param name="levelLoadData">The level load data.s</param>
     public void OnPlayButtonPressed(LevelLoadData levelLoadData)
     {
+        Debug.Log("pressed play");
         this.levelLoaderReference.Loader?.LoadLevel(levelLoadData);
     }
 
@@ -25,6 +26,7 @@ public class MainMenuManager : MonoBehaviour
     /// <param name="levelLoadData">The level load data.</param>
     public void OnCreditsButtonPressed(LevelLoadData levelLoadData)
     {
+        Debug.Log("pressed credits");
         this.levelLoaderReference.Loader?.LoadLevel(levelLoadData);
     }
 
@@ -33,6 +35,7 @@ public class MainMenuManager : MonoBehaviour
     /// </summary>
     public void OnExitGame()
     {
+        Debug.Log("pressed quit");
         Application.Quit(0);
     }
 }

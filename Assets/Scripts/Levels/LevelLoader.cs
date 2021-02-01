@@ -139,8 +139,11 @@ public class LevelLoader : ScriptableObject
     /// <param name="levelData">The level data.</param>
     public void LoadLevel(LevelLoadData levelData)
     {
+        Debug.Log("LOAD LEVEL");
         if (this.IsLoading)
         {
+
+        Debug.Log("already loading");
             return;
         }
 
