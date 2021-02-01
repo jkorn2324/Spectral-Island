@@ -72,12 +72,14 @@ public class ScriptData : MonoBehaviour
         npcTextMap.Add(12, new string[] { "That’s not how I saw it." });
 
         playerResponseMap.Add(121, "Then tell me how you felt.");
-        npcTextMap.Add(121, new string[] { "I had impressive abilities, but I didn’t feel pride because I was still trying to learn how to love myself.",
+        npcTextMap.Add(121, new string[] { "I had impressive abilities, but I didn’t feel pride",
+                                           "because I was still trying to learn how to love myself.",
                                            "And if anything, I looked up to you." });
 
         playerResponseMap.Add(1211, "It seems we both misunderstood each other.");
         npcTextMap.Add(1211, new string[] { "It certainly seems so.",
-                                            "Well, things won’t be the same between us, but we can try starting over and talking about our feelings, both good and bad.",
+                                            "Well, things won’t be the same between us,",
+                                            "but we can try starting over and talking about our feelings, both good and bad.",
                                             "The Soul fades away with a smile." });
 
         playerResponseMap.Add(1212, "I can’t believe it.");
@@ -137,7 +139,8 @@ public class ScriptData : MonoBehaviour
 
         playerResponseMap.Add(2122, "I don’t think we can continue like this.");
         npcTextMap.Add(2122, new string[] { "That’s funny coming from you.",
-                                            "Well, whenever you find yourself in need of support, don’t be surprised when no one comes to your aid.",
+                                            "Well, whenever you find yourself in need of support,",
+                                            "don’t be surprised when no one comes to your aid.",
                                             "The Soul fades away." });
 
         playerResponseMap.Add(22, "I couldn’t just leave you.");
@@ -177,7 +180,8 @@ public class ScriptData : MonoBehaviour
 
         playerResponseMap.Add(2222, "You still sound like you’re blaming me.");
         npcTextMap.Add(2222, new string[] { "It is hard not to feel angry with you.",
-                                            "If you’d just told me I was such a burden to you, then maybe things could have turned out differently.",
+                                            "If you’d just told me I was such a burden to you,",
+                                            "then maybe things could have turned out differently.",
                                             "All I wanted was someone to be supportive while I weathered a crisis.",
                                             "But it’s too bad that you didn’t seem to care.",
                                             "Even a little bit.",
@@ -227,11 +231,13 @@ public class ScriptData : MonoBehaviour
 
         playerResponseMap.Add(321, " … Go ahead.");
         npcTextMap.Add(321, new string[] { "You were always so excited to talk to me.",
-                                           "But it got to a point you talked over me all the time, even at times I was trying to reach out to you for help." });
+                                           "But it got to a point you talked over me all the time,",
+                                           "even at times I was trying to reach out to you for help." });
 
         playerResponseMap.Add(3211, "… I’m sorry.");
         npcTextMap.Add(3211, new string[] { "… It was upsetting to have to silently listen all the time.",
-                                            "But if you’re truly sorry, I hope we can go forward from this with a more equal relationship.",
+                                            "But if you’re truly sorry,",
+                                            "I hope we can go forward from this with a more equal relationship.",
                                             "The Soul fades away with a smile." });
 
         playerResponseMap.Add(3212, "I’m sorry I didn’t notice.");
@@ -399,7 +405,8 @@ public class ScriptData : MonoBehaviour
 
         playerResponseMap.Add(5212, "But I was so terrible to them.");
         npcTextMap.Add(5212, new string[] { "That is true.",
-                                            "But just because you’ve done something bad in the past, doesn’t mean you will be a bad person forever.",
+                                            "But just because you’ve done something bad in the past,",
+                                            "doesn’t mean you will be a bad person forever.",
                                             "Unless you choose to give up right here.",
                                             "Which if you are, I have nothing more to say." });
 
