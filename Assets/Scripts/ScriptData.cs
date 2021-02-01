@@ -175,7 +175,8 @@ public class ScriptData : MonoBehaviour
                                             "It’s too late now, but I advise that you be honest with those you care about.",
                                             "Talk to them and learn what they need.",
                                             "More often than not, they don’t need a savior.",
-                                            "They just need someone who will stand by them and be a shoulder to lean on when life becomes rough.",
+                                            "They just need someone who will stand by them and be a shoulder to lean on when life", 
+                                            "becomes rough.",
                                             "The Soul fades away." });
 
         playerResponseMap.Add(2222, "You still sound like you’re blaming me.");
