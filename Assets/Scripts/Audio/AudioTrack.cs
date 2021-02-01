@@ -195,11 +195,12 @@ public class AudioTrack
                 Debug.Log("Duration is greater than tracks.");
                 if(this._trackData.LoopTracks)
                 {
-                    this.Play();
+                    // hacky solution, let Unity audio looping take care of synchronization, these classes take care of transition
+                    //this.Play();
                 }
                 else
                 {
-                    this.Stop();
+                    //this.Stop();
                     return;
                 }
             }
